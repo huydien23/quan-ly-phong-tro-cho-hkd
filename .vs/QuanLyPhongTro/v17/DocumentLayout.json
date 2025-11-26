@@ -3,8 +3,132 @@
   "WorkspaceRootPath": "D:\\CSharp\\QuanLyPhongTro\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{C138EB95-827F-4B10-882E-93CBED49EA90}|QuanLyPhongTro\\QuanLyPhongTro.csproj|d:\\csharp\\quanlyphongtro\\quanlyphongtro\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{C138EB95-827F-4B10-882E-93CBED49EA90}|QuanLyPhongTro\\QuanLyPhongTro.csproj|solutionrelative:quanlyphongtro\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{C138EB95-827F-4B10-882E-93CBED49EA90}|QuanLyPhongTro\\QuanLyPhongTro.csproj|d:\\csharp\\quanlyphongtro\\quanlyphongtro\\dal\\databasehelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C138EB95-827F-4B10-882E-93CBED49EA90}|QuanLyPhongTro\\QuanLyPhongTro.csproj|solutionrelative:quanlyphongtro\\dal\\databasehelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C138EB95-827F-4B10-882E-93CBED49EA90}|QuanLyPhongTro\\QuanLyPhongTro.csproj|D:\\CSharp\\QuanLyPhongTro\\quanlyphongtro\\gui\\frmmain.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C138EB95-827F-4B10-882E-93CBED49EA90}|QuanLyPhongTro\\QuanLyPhongTro.csproj|solutionrelative:quanlyphongtro\\gui\\frmmain.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C138EB95-827F-4B10-882E-93CBED49EA90}|QuanLyPhongTro\\QuanLyPhongTro.csproj|D:\\CSharp\\QuanLyPhongTro\\quanlyphongtro\\bll\\contractbll.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C138EB95-827F-4B10-882E-93CBED49EA90}|QuanLyPhongTro\\QuanLyPhongTro.csproj|solutionrelative:quanlyphongtro\\bll\\contractbll.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C138EB95-827F-4B10-882E-93CBED49EA90}|QuanLyPhongTro\\QuanLyPhongTro.csproj|D:\\CSharp\\QuanLyPhongTro\\quanlyphongtro\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C138EB95-827F-4B10-882E-93CBED49EA90}|QuanLyPhongTro\\QuanLyPhongTro.csproj|solutionrelative:quanlyphongtro\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C138EB95-827F-4B10-882E-93CBED49EA90}|QuanLyPhongTro\\QuanLyPhongTro.csproj|D:\\CSharp\\QuanLyPhongTro\\quanlyphongtro\\dal\\settingdal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C138EB95-827F-4B10-882E-93CBED49EA90}|QuanLyPhongTro\\QuanLyPhongTro.csproj|solutionrelative:quanlyphongtro\\dal\\settingdal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C138EB95-827F-4B10-882E-93CBED49EA90}|QuanLyPhongTro\\QuanLyPhongTro.csproj|D:\\CSharp\\QuanLyPhongTro\\quanlyphongtro\\dal\\invoicedal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C138EB95-827F-4B10-882E-93CBED49EA90}|QuanLyPhongTro\\QuanLyPhongTro.csproj|solutionrelative:quanlyphongtro\\dal\\invoicedal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C138EB95-827F-4B10-882E-93CBED49EA90}|QuanLyPhongTro\\QuanLyPhongTro.csproj|D:\\CSharp\\QuanLyPhongTro\\quanlyphongtro\\dal\\contractdal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C138EB95-827F-4B10-882E-93CBED49EA90}|QuanLyPhongTro\\QuanLyPhongTro.csproj|solutionrelative:quanlyphongtro\\dal\\contractdal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C138EB95-827F-4B10-882E-93CBED49EA90}|QuanLyPhongTro\\QuanLyPhongTro.csproj|D:\\CSharp\\QuanLyPhongTro\\quanlyphongtro\\dal\\customerdal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C138EB95-827F-4B10-882E-93CBED49EA90}|QuanLyPhongTro\\QuanLyPhongTro.csproj|solutionrelative:quanlyphongtro\\dal\\customerdal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C138EB95-827F-4B10-882E-93CBED49EA90}|QuanLyPhongTro\\QuanLyPhongTro.csproj|D:\\CSharp\\QuanLyPhongTro\\quanlyphongtro\\dal\\roomdal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C138EB95-827F-4B10-882E-93CBED49EA90}|QuanLyPhongTro\\QuanLyPhongTro.csproj|solutionrelative:quanlyphongtro\\dal\\roomdal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C138EB95-827F-4B10-882E-93CBED49EA90}|QuanLyPhongTro\\QuanLyPhongTro.csproj|D:\\CSharp\\QuanLyPhongTro\\quanlyphongtro\\dal\\authdal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C138EB95-827F-4B10-882E-93CBED49EA90}|QuanLyPhongTro\\QuanLyPhongTro.csproj|solutionrelative:quanlyphongtro\\dal\\authdal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C138EB95-827F-4B10-882E-93CBED49EA90}|QuanLyPhongTro\\QuanLyPhongTro.csproj|D:\\CSharp\\QuanLyPhongTro\\quanlyphongtro\\core\\datahelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C138EB95-827F-4B10-882E-93CBED49EA90}|QuanLyPhongTro\\QuanLyPhongTro.csproj|solutionrelative:quanlyphongtro\\core\\datahelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C138EB95-827F-4B10-882E-93CBED49EA90}|QuanLyPhongTro\\QuanLyPhongTro.csproj|D:\\CSharp\\QuanLyPhongTro\\quanlyphongtro\\core\\appcolors.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C138EB95-827F-4B10-882E-93CBED49EA90}|QuanLyPhongTro\\QuanLyPhongTro.csproj|solutionrelative:quanlyphongtro\\core\\appcolors.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C138EB95-827F-4B10-882E-93CBED49EA90}|QuanLyPhongTro\\QuanLyPhongTro.csproj|D:\\CSharp\\QuanLyPhongTro\\quanlyphongtro\\dto\\settingdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C138EB95-827F-4B10-882E-93CBED49EA90}|QuanLyPhongTro\\QuanLyPhongTro.csproj|solutionrelative:quanlyphongtro\\dto\\settingdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C138EB95-827F-4B10-882E-93CBED49EA90}|QuanLyPhongTro\\QuanLyPhongTro.csproj|D:\\CSharp\\QuanLyPhongTro\\quanlyphongtro\\dto\\userdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C138EB95-827F-4B10-882E-93CBED49EA90}|QuanLyPhongTro\\QuanLyPhongTro.csproj|solutionrelative:quanlyphongtro\\dto\\userdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C138EB95-827F-4B10-882E-93CBED49EA90}|QuanLyPhongTro\\QuanLyPhongTro.csproj|D:\\CSharp\\QuanLyPhongTro\\quanlyphongtro\\dto\\invoicedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C138EB95-827F-4B10-882E-93CBED49EA90}|QuanLyPhongTro\\QuanLyPhongTro.csproj|solutionrelative:quanlyphongtro\\dto\\invoicedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C138EB95-827F-4B10-882E-93CBED49EA90}|QuanLyPhongTro\\QuanLyPhongTro.csproj|D:\\CSharp\\QuanLyPhongTro\\quanlyphongtro\\dto\\contractdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C138EB95-827F-4B10-882E-93CBED49EA90}|QuanLyPhongTro\\QuanLyPhongTro.csproj|solutionrelative:quanlyphongtro\\dto\\contractdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C138EB95-827F-4B10-882E-93CBED49EA90}|QuanLyPhongTro\\QuanLyPhongTro.csproj|D:\\CSharp\\QuanLyPhongTro\\quanlyphongtro\\dto\\customerdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C138EB95-827F-4B10-882E-93CBED49EA90}|QuanLyPhongTro\\QuanLyPhongTro.csproj|solutionrelative:quanlyphongtro\\dto\\customerdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C138EB95-827F-4B10-882E-93CBED49EA90}|QuanLyPhongTro\\QuanLyPhongTro.csproj|D:\\CSharp\\QuanLyPhongTro\\quanlyphongtro\\dto\\roomdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C138EB95-827F-4B10-882E-93CBED49EA90}|QuanLyPhongTro\\QuanLyPhongTro.csproj|solutionrelative:quanlyphongtro\\dto\\roomdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C138EB95-827F-4B10-882E-93CBED49EA90}|QuanLyPhongTro\\QuanLyPhongTro.csproj|D:\\CSharp\\QuanLyPhongTro\\quanlyphongtro\\gui\\uc_contracts.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C138EB95-827F-4B10-882E-93CBED49EA90}|QuanLyPhongTro\\QuanLyPhongTro.csproj|solutionrelative:quanlyphongtro\\gui\\uc_contracts.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C138EB95-827F-4B10-882E-93CBED49EA90}|QuanLyPhongTro\\QuanLyPhongTro.csproj|D:\\CSharp\\QuanLyPhongTro\\quanlyphongtro\\gui\\uc_contracts.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{C138EB95-827F-4B10-882E-93CBED49EA90}|QuanLyPhongTro\\QuanLyPhongTro.csproj|solutionrelative:quanlyphongtro\\gui\\uc_contracts.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C138EB95-827F-4B10-882E-93CBED49EA90}|QuanLyPhongTro\\QuanLyPhongTro.csproj|D:\\CSharp\\QuanLyPhongTro\\quanlyphongtro\\bll\\roombll.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C138EB95-827F-4B10-882E-93CBED49EA90}|QuanLyPhongTro\\QuanLyPhongTro.csproj|solutionrelative:quanlyphongtro\\bll\\roombll.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C138EB95-827F-4B10-882E-93CBED49EA90}|QuanLyPhongTro\\QuanLyPhongTro.csproj|D:\\CSharp\\QuanLyPhongTro\\quanlyphongtro\\bll\\invoicebll.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C138EB95-827F-4B10-882E-93CBED49EA90}|QuanLyPhongTro\\QuanLyPhongTro.csproj|solutionrelative:quanlyphongtro\\bll\\invoicebll.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C138EB95-827F-4B10-882E-93CBED49EA90}|QuanLyPhongTro\\QuanLyPhongTro.csproj|D:\\CSharp\\QuanLyPhongTro\\quanlyphongtro\\bll\\authbll.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C138EB95-827F-4B10-882E-93CBED49EA90}|QuanLyPhongTro\\QuanLyPhongTro.csproj|solutionrelative:quanlyphongtro\\bll\\authbll.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C138EB95-827F-4B10-882E-93CBED49EA90}|QuanLyPhongTro\\QuanLyPhongTro.csproj|D:\\CSharp\\QuanLyPhongTro\\quanlyphongtro\\gui\\frmmain.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{C138EB95-827F-4B10-882E-93CBED49EA90}|QuanLyPhongTro\\QuanLyPhongTro.csproj|solutionrelative:quanlyphongtro\\gui\\frmmain.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C138EB95-827F-4B10-882E-93CBED49EA90}|QuanLyPhongTro\\QuanLyPhongTro.csproj|D:\\CSharp\\QuanLyPhongTro\\quanlyphongtro\\gui\\frmlogin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{C138EB95-827F-4B10-882E-93CBED49EA90}|QuanLyPhongTro\\QuanLyPhongTro.csproj|solutionrelative:quanlyphongtro\\gui\\frmlogin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C138EB95-827F-4B10-882E-93CBED49EA90}|QuanLyPhongTro\\QuanLyPhongTro.csproj|D:\\CSharp\\QuanLyPhongTro\\quanlyphongtro\\gui\\uc_settings.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C138EB95-827F-4B10-882E-93CBED49EA90}|QuanLyPhongTro\\QuanLyPhongTro.csproj|solutionrelative:quanlyphongtro\\gui\\uc_settings.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C138EB95-827F-4B10-882E-93CBED49EA90}|QuanLyPhongTro\\QuanLyPhongTro.csproj|D:\\CSharp\\QuanLyPhongTro\\quanlyphongtro\\gui\\uc_invoices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C138EB95-827F-4B10-882E-93CBED49EA90}|QuanLyPhongTro\\QuanLyPhongTro.csproj|solutionrelative:quanlyphongtro\\gui\\uc_invoices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C138EB95-827F-4B10-882E-93CBED49EA90}|QuanLyPhongTro\\QuanLyPhongTro.csproj|D:\\CSharp\\QuanLyPhongTro\\quanlyphongtro\\gui\\uc_services.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C138EB95-827F-4B10-882E-93CBED49EA90}|QuanLyPhongTro\\QuanLyPhongTro.csproj|solutionrelative:quanlyphongtro\\gui\\uc_services.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C138EB95-827F-4B10-882E-93CBED49EA90}|QuanLyPhongTro\\QuanLyPhongTro.csproj|D:\\CSharp\\QuanLyPhongTro\\quanlyphongtro\\gui\\uc_dashboard.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C138EB95-827F-4B10-882E-93CBED49EA90}|QuanLyPhongTro\\QuanLyPhongTro.csproj|solutionrelative:quanlyphongtro\\gui\\uc_dashboard.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C138EB95-827F-4B10-882E-93CBED49EA90}|QuanLyPhongTro\\QuanLyPhongTro.csproj|D:\\CSharp\\QuanLyPhongTro\\quanlyphongtro\\gui\\uc_rooms.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C138EB95-827F-4B10-882E-93CBED49EA90}|QuanLyPhongTro\\QuanLyPhongTro.csproj|solutionrelative:quanlyphongtro\\gui\\uc_rooms.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C138EB95-827F-4B10-882E-93CBED49EA90}|QuanLyPhongTro\\QuanLyPhongTro.csproj|D:\\CSharp\\QuanLyPhongTro\\quanlyphongtro\\gui\\frmlogin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C138EB95-827F-4B10-882E-93CBED49EA90}|QuanLyPhongTro\\QuanLyPhongTro.csproj|solutionrelative:quanlyphongtro\\gui\\frmlogin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\CSharp\\QuanLyPhongTro\\QuanLyPhongTro\\GUI\\UC_Customers.c||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:QuanLyPhongTro\\GUI\\UC_Customers.c||{3B902123-F8A7-4915-9F01-361F908088D0}"
     }
   ],
   "DocumentGroupContainers": [
@@ -14,7 +138,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 8,
+          "SelectedChildIndex": 10,
           "Children": [
             {
               "$type": "Bookmark",
@@ -50,15 +174,385 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Form1.cs [Design]",
-              "DocumentMoniker": "D:\\CSharp\\QuanLyPhongTro\\QuanLyPhongTro\\Form1.cs",
-              "RelativeDocumentMoniker": "QuanLyPhongTro\\Form1.cs",
-              "ToolTip": "D:\\CSharp\\QuanLyPhongTro\\QuanLyPhongTro\\Form1.cs [Design]",
-              "RelativeToolTip": "QuanLyPhongTro\\Form1.cs [Design]",
+              "DocumentIndex": 2,
+              "Title": "ContractBLL.cs",
+              "DocumentMoniker": "D:\\CSharp\\QuanLyPhongTro\\QuanLyPhongTro\\BLL\\ContractBLL.cs",
+              "RelativeDocumentMoniker": "QuanLyPhongTro\\BLL\\ContractBLL.cs",
+              "ToolTip": "D:\\CSharp\\QuanLyPhongTro\\QuanLyPhongTro\\BLL\\ContractBLL.cs",
+              "RelativeToolTip": "QuanLyPhongTro\\BLL\\ContractBLL.cs",
+              "ViewState": "AgIAABYAAAAAAAAAAAAgwCsAAAAmAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-25T15:24:32.773Z",
-              "EditorCaption": " [Design]"
+              "WhenOpened": "2025-11-26T04:46:45.704Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "FrmMain.cs",
+              "DocumentMoniker": "D:\\CSharp\\QuanLyPhongTro\\QuanLyPhongTro\\GUI\\FrmMain.cs",
+              "RelativeDocumentMoniker": "QuanLyPhongTro\\GUI\\FrmMain.cs",
+              "ToolTip": "D:\\CSharp\\QuanLyPhongTro\\QuanLyPhongTro\\GUI\\FrmMain.cs",
+              "RelativeToolTip": "QuanLyPhongTro\\GUI\\FrmMain.cs",
+              "ViewState": "AgIAAEAAAAAAAAAAAAAewFEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-26T04:39:31.634Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "DatabaseHelper.cs",
+              "DocumentMoniker": "D:\\CSharp\\QuanLyPhongTro\\QuanLyPhongTro\\DAL\\DatabaseHelper.cs",
+              "RelativeDocumentMoniker": "QuanLyPhongTro\\DAL\\DatabaseHelper.cs",
+              "ToolTip": "D:\\CSharp\\QuanLyPhongTro\\QuanLyPhongTro\\DAL\\DatabaseHelper.cs",
+              "RelativeToolTip": "QuanLyPhongTro\\DAL\\DatabaseHelper.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAaAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-26T04:38:36.673Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "ContractDAL.cs",
+              "DocumentMoniker": "D:\\CSharp\\QuanLyPhongTro\\QuanLyPhongTro\\DAL\\ContractDAL.cs",
+              "RelativeDocumentMoniker": "QuanLyPhongTro\\DAL\\ContractDAL.cs",
+              "ToolTip": "D:\\CSharp\\QuanLyPhongTro\\QuanLyPhongTro\\DAL\\ContractDAL.cs",
+              "RelativeToolTip": "QuanLyPhongTro\\DAL\\ContractDAL.cs",
+              "ViewState": "AgIAAAIAAAAAAAAAAAAkwCEAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-26T04:54:31.113Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "InvoiceDAL.cs",
+              "DocumentMoniker": "D:\\CSharp\\QuanLyPhongTro\\QuanLyPhongTro\\DAL\\InvoiceDAL.cs",
+              "RelativeDocumentMoniker": "QuanLyPhongTro\\DAL\\InvoiceDAL.cs",
+              "ToolTip": "D:\\CSharp\\QuanLyPhongTro\\QuanLyPhongTro\\DAL\\InvoiceDAL.cs",
+              "RelativeToolTip": "QuanLyPhongTro\\DAL\\InvoiceDAL.cs",
+              "ViewState": "AgIAAAQAAAAAAAAAAAA3wCMAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-26T04:55:10.845Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "SettingDAL.cs",
+              "DocumentMoniker": "D:\\CSharp\\QuanLyPhongTro\\QuanLyPhongTro\\DAL\\SettingDAL.cs",
+              "RelativeDocumentMoniker": "QuanLyPhongTro\\DAL\\SettingDAL.cs",
+              "ToolTip": "D:\\CSharp\\QuanLyPhongTro\\QuanLyPhongTro\\DAL\\SettingDAL.cs",
+              "RelativeToolTip": "QuanLyPhongTro\\DAL\\SettingDAL.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-26T04:55:23.29Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "CustomerDAL.cs",
+              "DocumentMoniker": "D:\\CSharp\\QuanLyPhongTro\\QuanLyPhongTro\\DAL\\CustomerDAL.cs",
+              "RelativeDocumentMoniker": "QuanLyPhongTro\\DAL\\CustomerDAL.cs",
+              "ToolTip": "D:\\CSharp\\QuanLyPhongTro\\QuanLyPhongTro\\DAL\\CustomerDAL.cs",
+              "RelativeToolTip": "QuanLyPhongTro\\DAL\\CustomerDAL.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-26T04:54:14.477Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "RoomDAL.cs",
+              "DocumentMoniker": "D:\\CSharp\\QuanLyPhongTro\\QuanLyPhongTro\\DAL\\RoomDAL.cs",
+              "RelativeDocumentMoniker": "QuanLyPhongTro\\DAL\\RoomDAL.cs",
+              "ToolTip": "D:\\CSharp\\QuanLyPhongTro\\QuanLyPhongTro\\DAL\\RoomDAL.cs",
+              "RelativeToolTip": "QuanLyPhongTro\\DAL\\RoomDAL.cs",
+              "ViewState": "AgIAAAIAAAAAAAAAAAAkwCEAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-26T04:53:55.23Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "AuthDAL.cs",
+              "DocumentMoniker": "D:\\CSharp\\QuanLyPhongTro\\QuanLyPhongTro\\DAL\\AuthDAL.cs",
+              "RelativeDocumentMoniker": "QuanLyPhongTro\\DAL\\AuthDAL.cs",
+              "ToolTip": "D:\\CSharp\\QuanLyPhongTro\\QuanLyPhongTro\\DAL\\AuthDAL.cs",
+              "RelativeToolTip": "QuanLyPhongTro\\DAL\\AuthDAL.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-26T04:53:39.262Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "DataHelper.cs",
+              "DocumentMoniker": "D:\\CSharp\\QuanLyPhongTro\\QuanLyPhongTro\\Core\\DataHelper.cs",
+              "RelativeDocumentMoniker": "QuanLyPhongTro\\Core\\DataHelper.cs",
+              "ToolTip": "D:\\CSharp\\QuanLyPhongTro\\QuanLyPhongTro\\Core\\DataHelper.cs",
+              "RelativeToolTip": "QuanLyPhongTro\\Core\\DataHelper.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAkwB8AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-26T04:51:10.099Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "SettingDTO.cs",
+              "DocumentMoniker": "D:\\CSharp\\QuanLyPhongTro\\QuanLyPhongTro\\DTO\\SettingDTO.cs",
+              "RelativeDocumentMoniker": "QuanLyPhongTro\\DTO\\SettingDTO.cs",
+              "ToolTip": "D:\\CSharp\\QuanLyPhongTro\\QuanLyPhongTro\\DTO\\SettingDTO.cs",
+              "RelativeToolTip": "QuanLyPhongTro\\DTO\\SettingDTO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-26T04:50:32.17Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "UserDTO.cs",
+              "DocumentMoniker": "D:\\CSharp\\QuanLyPhongTro\\QuanLyPhongTro\\DTO\\UserDTO.cs",
+              "RelativeDocumentMoniker": "QuanLyPhongTro\\DTO\\UserDTO.cs",
+              "ToolTip": "D:\\CSharp\\QuanLyPhongTro\\QuanLyPhongTro\\DTO\\UserDTO.cs",
+              "RelativeToolTip": "QuanLyPhongTro\\DTO\\UserDTO.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAowAkAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-26T04:50:11.47Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "AppColors.cs",
+              "DocumentMoniker": "D:\\CSharp\\QuanLyPhongTro\\QuanLyPhongTro\\Core\\AppColors.cs",
+              "RelativeDocumentMoniker": "QuanLyPhongTro\\Core\\AppColors.cs",
+              "ToolTip": "D:\\CSharp\\QuanLyPhongTro\\QuanLyPhongTro\\Core\\AppColors.cs",
+              "RelativeToolTip": "QuanLyPhongTro\\Core\\AppColors.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-26T04:38:10.4Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "InvoiceDTO.cs",
+              "DocumentMoniker": "D:\\CSharp\\QuanLyPhongTro\\QuanLyPhongTro\\DTO\\InvoiceDTO.cs",
+              "RelativeDocumentMoniker": "QuanLyPhongTro\\DTO\\InvoiceDTO.cs",
+              "ToolTip": "D:\\CSharp\\QuanLyPhongTro\\QuanLyPhongTro\\DTO\\InvoiceDTO.cs",
+              "RelativeToolTip": "QuanLyPhongTro\\DTO\\InvoiceDTO.cs",
+              "ViewState": "AgIAABMAAAAAAAAAAAAwwB8AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-26T04:49:47.63Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\CSharp\\QuanLyPhongTro\\QuanLyPhongTro\\Program.cs",
+              "RelativeDocumentMoniker": "QuanLyPhongTro\\Program.cs",
+              "ToolTip": "D:\\CSharp\\QuanLyPhongTro\\QuanLyPhongTro\\Program.cs",
+              "RelativeToolTip": "QuanLyPhongTro\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAABBAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-26T04:35:22.241Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "ContractDTO.cs",
+              "DocumentMoniker": "D:\\CSharp\\QuanLyPhongTro\\QuanLyPhongTro\\DTO\\ContractDTO.cs",
+              "RelativeDocumentMoniker": "QuanLyPhongTro\\DTO\\ContractDTO.cs",
+              "ToolTip": "D:\\CSharp\\QuanLyPhongTro\\QuanLyPhongTro\\DTO\\ContractDTO.cs",
+              "RelativeToolTip": "QuanLyPhongTro\\DTO\\ContractDTO.cs",
+              "ViewState": "AgIAAAcAAAAAAAAAAAAgwBIAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-26T04:49:30.286Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "CustomerDTO.cs",
+              "DocumentMoniker": "D:\\CSharp\\QuanLyPhongTro\\QuanLyPhongTro\\DTO\\CustomerDTO.cs",
+              "RelativeDocumentMoniker": "QuanLyPhongTro\\DTO\\CustomerDTO.cs",
+              "ToolTip": "D:\\CSharp\\QuanLyPhongTro\\QuanLyPhongTro\\DTO\\CustomerDTO.cs",
+              "RelativeToolTip": "QuanLyPhongTro\\DTO\\CustomerDTO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-26T04:49:13.364Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "RoomDTO.cs",
+              "DocumentMoniker": "D:\\CSharp\\QuanLyPhongTro\\QuanLyPhongTro\\DTO\\RoomDTO.cs",
+              "RelativeDocumentMoniker": "QuanLyPhongTro\\DTO\\RoomDTO.cs",
+              "ToolTip": "D:\\CSharp\\QuanLyPhongTro\\QuanLyPhongTro\\DTO\\RoomDTO.cs",
+              "RelativeToolTip": "QuanLyPhongTro\\DTO\\RoomDTO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-26T04:48:51.995Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "UC_Contracts.cs [Design]",
+              "DocumentMoniker": "D:\\CSharp\\QuanLyPhongTro\\QuanLyPhongTro\\GUI\\UC_Contracts.cs",
+              "RelativeDocumentMoniker": "QuanLyPhongTro\\GUI\\UC_Contracts.cs",
+              "ToolTip": "D:\\CSharp\\QuanLyPhongTro\\QuanLyPhongTro\\GUI\\UC_Contracts.cs [Design]",
+              "RelativeToolTip": "QuanLyPhongTro\\GUI\\UC_Contracts.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-26T04:47:38.581Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "RoomBLL.cs",
+              "DocumentMoniker": "D:\\CSharp\\QuanLyPhongTro\\QuanLyPhongTro\\BLL\\RoomBLL.cs",
+              "RelativeDocumentMoniker": "QuanLyPhongTro\\BLL\\RoomBLL.cs",
+              "ToolTip": "D:\\CSharp\\QuanLyPhongTro\\QuanLyPhongTro\\BLL\\RoomBLL.cs",
+              "RelativeToolTip": "QuanLyPhongTro\\BLL\\RoomBLL.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABoAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-26T04:47:12.006Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "InvoiceBLL.cs",
+              "DocumentMoniker": "D:\\CSharp\\QuanLyPhongTro\\QuanLyPhongTro\\BLL\\InvoiceBLL.cs",
+              "RelativeDocumentMoniker": "QuanLyPhongTro\\BLL\\InvoiceBLL.cs",
+              "ToolTip": "D:\\CSharp\\QuanLyPhongTro\\QuanLyPhongTro\\BLL\\InvoiceBLL.cs",
+              "RelativeToolTip": "QuanLyPhongTro\\BLL\\InvoiceBLL.cs",
+              "ViewState": "AgIAAD8AAAAAAAAAAAAkwGAAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-26T04:46:58.557Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "UC_Contracts.cs",
+              "DocumentMoniker": "D:\\CSharp\\QuanLyPhongTro\\QuanLyPhongTro\\GUI\\UC_Contracts.cs",
+              "RelativeDocumentMoniker": "QuanLyPhongTro\\GUI\\UC_Contracts.cs",
+              "ToolTip": "D:\\CSharp\\QuanLyPhongTro\\QuanLyPhongTro\\GUI\\UC_Contracts.cs",
+              "RelativeToolTip": "QuanLyPhongTro\\GUI\\UC_Contracts.cs",
+              "ViewState": "AgIAAF4AAAAAAAAAAAAowHgAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-26T04:43:32.168Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "AuthBLL.cs",
+              "DocumentMoniker": "D:\\CSharp\\QuanLyPhongTro\\QuanLyPhongTro\\BLL\\AuthBLL.cs",
+              "RelativeDocumentMoniker": "QuanLyPhongTro\\BLL\\AuthBLL.cs",
+              "ToolTip": "D:\\CSharp\\QuanLyPhongTro\\QuanLyPhongTro\\BLL\\AuthBLL.cs",
+              "RelativeToolTip": "QuanLyPhongTro\\BLL\\AuthBLL.cs",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAkwC4AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-26T04:46:27.446Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "FrmLogin.cs [Design]",
+              "DocumentMoniker": "D:\\CSharp\\QuanLyPhongTro\\QuanLyPhongTro\\GUI\\FrmLogin.cs",
+              "RelativeDocumentMoniker": "QuanLyPhongTro\\GUI\\FrmLogin.cs",
+              "ToolTip": "D:\\CSharp\\QuanLyPhongTro\\QuanLyPhongTro\\GUI\\FrmLogin.cs [Design]",
+              "RelativeToolTip": "QuanLyPhongTro\\GUI\\FrmLogin.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-26T04:45:23.499Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "FrmMain.cs [Design]",
+              "DocumentMoniker": "D:\\CSharp\\QuanLyPhongTro\\QuanLyPhongTro\\GUI\\FrmMain.cs",
+              "RelativeDocumentMoniker": "QuanLyPhongTro\\GUI\\FrmMain.cs",
+              "ToolTip": "D:\\CSharp\\QuanLyPhongTro\\QuanLyPhongTro\\GUI\\FrmMain.cs [Design]",
+              "RelativeToolTip": "QuanLyPhongTro\\GUI\\FrmMain.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-26T04:45:09.474Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
+              "Title": "UC_Settings.cs",
+              "DocumentMoniker": "D:\\CSharp\\QuanLyPhongTro\\QuanLyPhongTro\\GUI\\UC_Settings.cs",
+              "RelativeDocumentMoniker": "QuanLyPhongTro\\GUI\\UC_Settings.cs",
+              "ToolTip": "D:\\CSharp\\QuanLyPhongTro\\QuanLyPhongTro\\GUI\\UC_Settings.cs",
+              "RelativeToolTip": "QuanLyPhongTro\\GUI\\UC_Settings.cs",
+              "ViewState": "AgIAADsAAAAAAAAAAAAkwFoAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-26T04:44:29.684Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 26,
+              "Title": "UC_Invoices.cs",
+              "DocumentMoniker": "D:\\CSharp\\QuanLyPhongTro\\QuanLyPhongTro\\GUI\\UC_Invoices.cs",
+              "RelativeDocumentMoniker": "QuanLyPhongTro\\GUI\\UC_Invoices.cs",
+              "ToolTip": "D:\\CSharp\\QuanLyPhongTro\\QuanLyPhongTro\\GUI\\UC_Invoices.cs",
+              "RelativeToolTip": "QuanLyPhongTro\\GUI\\UC_Invoices.cs",
+              "ViewState": "AgIAACUAAAAAAAAAAAAkwEUAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-26T04:44:12.622Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 27,
+              "Title": "UC_Services.cs",
+              "DocumentMoniker": "D:\\CSharp\\QuanLyPhongTro\\QuanLyPhongTro\\GUI\\UC_Services.cs",
+              "RelativeDocumentMoniker": "QuanLyPhongTro\\GUI\\UC_Services.cs",
+              "ToolTip": "D:\\CSharp\\QuanLyPhongTro\\QuanLyPhongTro\\GUI\\UC_Services.cs",
+              "RelativeToolTip": "QuanLyPhongTro\\GUI\\UC_Services.cs",
+              "ViewState": "AgIAAB4AAAAAAAAAAAAkwD0AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-26T04:43:51.34Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 31,
+              "Title": "UC_Customers.c",
+              "DocumentMoniker": "D:\\CSharp\\QuanLyPhongTro\\QuanLyPhongTro\\GUI\\UC_Customers.c",
+              "RelativeDocumentMoniker": "QuanLyPhongTro\\GUI\\UC_Customers.c",
+              "ToolTip": "D:\\CSharp\\QuanLyPhongTro\\QuanLyPhongTro\\GUI\\UC_Customers.c",
+              "RelativeToolTip": "QuanLyPhongTro\\GUI\\UC_Customers.c",
+              "ViewState": "AgIAADEAAAAAAAAAAAAgwEUAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
+              "WhenOpened": "2025-11-26T04:43:11.667Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 28,
+              "Title": "UC_Dashboard.cs",
+              "DocumentMoniker": "D:\\CSharp\\QuanLyPhongTro\\QuanLyPhongTro\\GUI\\UC_Dashboard.cs",
+              "RelativeDocumentMoniker": "QuanLyPhongTro\\GUI\\UC_Dashboard.cs",
+              "ToolTip": "D:\\CSharp\\QuanLyPhongTro\\QuanLyPhongTro\\GUI\\UC_Dashboard.cs",
+              "RelativeToolTip": "QuanLyPhongTro\\GUI\\UC_Dashboard.cs",
+              "ViewState": "AgIAADkAAAAAAAAAAAAowAcAAAAgAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-26T04:40:16.079Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 29,
+              "Title": "UC_Rooms.cs",
+              "DocumentMoniker": "D:\\CSharp\\QuanLyPhongTro\\QuanLyPhongTro\\GUI\\UC_Rooms.cs",
+              "RelativeDocumentMoniker": "QuanLyPhongTro\\GUI\\UC_Rooms.cs",
+              "ToolTip": "D:\\CSharp\\QuanLyPhongTro\\QuanLyPhongTro\\GUI\\UC_Rooms.cs",
+              "RelativeToolTip": "QuanLyPhongTro\\GUI\\UC_Rooms.cs",
+              "ViewState": "AgIAAEcAAAAAAAAAAAAkwGYAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-26T04:39:56.435Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 30,
+              "Title": "FrmLogin.cs",
+              "DocumentMoniker": "D:\\CSharp\\QuanLyPhongTro\\QuanLyPhongTro\\GUI\\FrmLogin.cs",
+              "RelativeDocumentMoniker": "QuanLyPhongTro\\GUI\\FrmLogin.cs",
+              "ToolTip": "D:\\CSharp\\QuanLyPhongTro\\QuanLyPhongTro\\GUI\\FrmLogin.cs",
+              "RelativeToolTip": "QuanLyPhongTro\\GUI\\FrmLogin.cs",
+              "ViewState": "AgIAADYAAAAAAAAAAAAkwEwAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-26T04:39:06.662Z"
             }
           ]
         }
