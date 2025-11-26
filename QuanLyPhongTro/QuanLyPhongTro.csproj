@@ -60,6 +60,7 @@
     <Compile Include="Core\AppColors.cs" />
     <Compile Include="Core\DataHelper.cs" />
     <Compile Include="Core\ExportHelper.cs" />
+    <Compile Include="Core\VietnameseLocalization.cs" />
     <Compile Include="Core\VNDialog.cs" />
     <Compile Include="DAL\AuthDAL.cs" />
     <Compile Include="DAL\ContractDAL.cs" />

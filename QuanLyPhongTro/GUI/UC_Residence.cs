@@ -129,7 +129,8 @@ namespace QuanLyPhongTro.GUI
             foreach (DataRow row in dtCustomers.Rows)
             {
                 string display = $"{row["RoomName"]} - {row["FullName"]} ({row["CCCD"]})";
-                cboCustomer.Items.Add(new SelectItem(display, new { CustomerId = row["CustomerId"], RoomId = row["RoomId"] }));
+                // Lưu CustomerId|RoomId dạng string để tránh lỗi cast
+                cboCustomer.Items.Add(new SelectItem(display, $"{row["CustomerId"]}|{row["RoomId"]}"));
             }
             if (cboCustomer.Items.Count > 0) cboCustomer.SelectedIndex = 0;
             layout.Controls.Add(cboCustomer, 1, 0);
@@ -167,8 +168,9 @@ namespace QuanLyPhongTro.GUI
             {
                 for (int i = 0; i < cboCustomer.Items.Count; i++)
                 {
-                    dynamic tag = ((SelectItem)cboCustomer.Items[i]).Tag;
-                    if (tag.CustomerId.ToString() == existing["CustomerId"].ToString())
+                    var item = cboCustomer.Items[i] as SelectItem;
+                    string tag = item?.Tag?.ToString();
+                    if (tag != null && tag.Split('|')[0] == existing["CustomerId"].ToString())
                     { cboCustomer.SelectedIndex = i; break; }
                 }
                 if (existing["RegisterDate"] != DBNull.Value) dateRegister.Value = Convert.ToDateTime(existing["RegisterDate"]);
@@ -193,10 +195,13 @@ namespace QuanLyPhongTro.GUI
 
                 try
                 {
-                    dynamic selected = ((SelectItem)cboCustomer.SelectedValue).Tag;
-                    int customerId = Convert.ToInt32(selected.CustomerId);
-                    int roomId = Convert.ToInt32(selected.RoomId);
-                    string status = ((SelectItem)cboStatus.SelectedValue).Tag.ToString();
+                    var customerItem = cboCustomer.SelectedValue as SelectItem;
+                    string selectedTag = customerItem?.Tag?.ToString();
+                    if (string.IsNullOrEmpty(selectedTag)) { AntdUI.Message.warn(form, "Lỗi chọn khách!"); return; }
+                    string[] parts = selectedTag.Split('|');
+                    int customerId = Convert.ToInt32(parts[0]);
+                    int roomId = Convert.ToInt32(parts[1]);
+                    string status = cboStatus.SelectedIndex == 0 ? "DaDangKy" : "ChuaDangKy";
 
                     if (residenceId.HasValue)
                     {

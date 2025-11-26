@@ -241,7 +241,7 @@ namespace QuanLyPhongTro.GUI
 
                 try
                 {
-                    string gender = cboGender.SelectedValue != null ? ((SelectItem)cboGender.SelectedValue).Tag?.ToString() : null;
+                    string gender = cboGender.SelectedIndex >= 0 ? (cboGender.SelectedIndex == 0 ? "Nam" : "Nữ") : null;
                     
                     if (customerId.HasValue)
                     {

@@ -148,7 +148,7 @@ namespace QuanLyPhongTro.GUI
 
             // Auto fill phí theo loại xe
             cboType.SelectedIndexChanged += (s, e) => {
-                string type = ((SelectItem)cboType.SelectedValue)?.Tag?.ToString();
+                string type = cboType.SelectedIndex == 0 ? "XeMay" : (cboType.SelectedIndex == 1 ? "XeDap" : "OTo");
                 var fee = DatabaseHelper.ExecuteScalar($"SELECT SettingValue FROM Settings WHERE SettingKey = 'Phi{type}'");
                 if (fee != null) numFee.Value = Convert.ToDecimal(fee);
             };
@@ -157,8 +157,11 @@ namespace QuanLyPhongTro.GUI
             if (existing != null)
             {
                 for (int i = 0; i < cboCustomer.Items.Count; i++)
-                    if (((SelectItem)cboCustomer.Items[i]).Tag.ToString() == existing["CustomerId"].ToString())
+                {
+                    var item = cboCustomer.Items[i] as SelectItem;
+                    if (item != null && item.Tag?.ToString() == existing["CustomerId"].ToString())
                     { cboCustomer.SelectedIndex = i; break; }
+                }
                 
                 string vtype = existing["VehicleType"]?.ToString();
                 if (vtype == "XeMay") cboType.SelectedIndex = 0;
@@ -186,8 +189,9 @@ namespace QuanLyPhongTro.GUI
 
                 try
                 {
-                    int customerId = Convert.ToInt32(((SelectItem)cboCustomer.SelectedValue).Tag);
-                    string vehicleType = ((SelectItem)cboType.SelectedValue).Tag.ToString();
+                    var customerItem = cboCustomer.SelectedValue as SelectItem;
+                    int customerId = customerItem != null ? Convert.ToInt32(customerItem.Tag) : 0;
+                    string vehicleType = cboType.SelectedIndex == 0 ? "XeMay" : (cboType.SelectedIndex == 1 ? "XeDap" : "OTo");
 
                     if (vehicleId.HasValue)
                     {

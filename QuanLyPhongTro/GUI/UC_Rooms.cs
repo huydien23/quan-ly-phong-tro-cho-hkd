@@ -220,12 +220,28 @@ namespace QuanLyPhongTro.GUI
             y += 20;
             var pnlButtons = new FlowLayoutPanel { Location = new Point(10, y), Size = new Size(440, 45), FlowDirection = FlowDirection.LeftToRight };
             
-            var btnClose = new AntdUI.Button { Text = "Đóng", Size = new Size(80, 35) };
-            btnClose.Click += (s, e) => form.Close();
+            // NẾU PHÒNG TRỐNG - Hiện nút CHO THUÊ
+            if (!isRented)
+            {
+                var btnRent = new AntdUI.Button { Text = "Cho thuê phòng này", Type = TTypeMini.Primary, BackColor = AppColors.Green, Size = new Size(160, 35) };
+                btnRent.Click += (s, e) => {
+                    form.Close();
+                    ShowRentRoomForm(roomId, name, price);
+                };
+                pnlButtons.Controls.Add(btnRent);
+            }
+
+            // Nút Sửa phòng
+            var btnEdit = new AntdUI.Button { Text = "Sửa", Size = new Size(60, 35) };
+            btnEdit.Click += (s, e) => {
+                form.Close();
+                ShowEditRoomForm(roomId);
+            };
+            pnlButtons.Controls.Add(btnEdit);
 
             if (!isRented)
             {
-                var btnDelete = new AntdUI.Button { Text = "Xóa phòng", ForeColor = AppColors.Red, Size = new Size(100, 35) };
+                var btnDelete = new AntdUI.Button { Text = "Xóa", ForeColor = AppColors.Red, Size = new Size(60, 35) };
                 btnDelete.Click += (s, e) => {
                     if (VNDialog.Confirm($"Bạn có chắc muốn xóa {name}?"))
                     {
@@ -246,6 +262,8 @@ namespace QuanLyPhongTro.GUI
                 pnlButtons.Controls.Add(btnDelete);
             }
 
+            var btnClose = new AntdUI.Button { Text = "Đóng", Size = new Size(60, 35) };
+            btnClose.Click += (s, e) => form.Close();
             pnlButtons.Controls.Add(btnClose);
             mainPanel.Controls.Add(pnlButtons);
 
@@ -260,6 +278,210 @@ namespace QuanLyPhongTro.GUI
             panel.Controls.Add(lblLabel);
             panel.Controls.Add(lblValue);
             y += 26;
+        }
+
+        private void ShowEditRoomForm(int roomId)
+        {
+            var room = DatabaseHelper.ExecuteQuery("SELECT * FROM Rooms WHERE RoomId = @id",
+                new System.Data.SqlClient.SqlParameter("@id", roomId));
+            if (room.Rows.Count == 0) return;
+            var r = room.Rows[0];
+
+            var form = new Form();
+            form.Text = "Sửa phòng " + r["RoomName"];
+            form.Size = new Size(400, 300);
+            form.StartPosition = FormStartPosition.CenterParent;
+            form.FormBorderStyle = FormBorderStyle.FixedDialog;
+            form.MaximizeBox = false;
+            form.MinimizeBox = false;
+
+            var layout = new TableLayoutPanel();
+            layout.Dock = DockStyle.Fill;
+            layout.Padding = new Padding(20);
+            layout.ColumnCount = 2;
+            layout.RowCount = 3;
+            layout.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 100));
+            layout.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100));
+            for (int i = 0; i < 2; i++) layout.RowStyles.Add(new RowStyle(SizeType.Absolute, 45));
+            layout.RowStyles.Add(new RowStyle(SizeType.Absolute, 50));
+
+            layout.Controls.Add(new System.Windows.Forms.Label { Text = "Tên phòng:", TextAlign = ContentAlignment.MiddleRight, Dock = DockStyle.Fill }, 0, 0);
+            var txtName = new AntdUI.Input { Text = r["RoomName"].ToString(), Dock = DockStyle.Fill };
+            layout.Controls.Add(txtName, 1, 0);
+
+            layout.Controls.Add(new System.Windows.Forms.Label { Text = "Giá thuê:", TextAlign = ContentAlignment.MiddleRight, Dock = DockStyle.Fill }, 0, 1);
+            var txtPrice = new AntdUI.InputNumber { Dock = DockStyle.Fill, Value = r["Price"] != DBNull.Value ? Convert.ToDecimal(r["Price"]) : 0 };
+            layout.Controls.Add(txtPrice, 1, 1);
+
+            var pnlButtons = new FlowLayoutPanel { Dock = DockStyle.Fill, FlowDirection = FlowDirection.RightToLeft };
+            var btnCancel = new AntdUI.Button { Text = "Hủy", Size = new Size(80, 35) };
+            btnCancel.Click += (s, e) => form.Close();
+
+            var btnSave = new AntdUI.Button { Text = "Lưu", Type = TTypeMini.Primary, BackColor = AppColors.Blue600, Size = new Size(80, 35) };
+            btnSave.Click += (s, e) => {
+                if (string.IsNullOrWhiteSpace(txtName.Text))
+                {
+                    AntdUI.Message.warn(form, "Vui lòng nhập tên phòng!");
+                    return;
+                }
+                try
+                {
+                    DatabaseHelper.ExecuteNonQuery(
+                        "UPDATE Rooms SET RoomName=@name, Price=@price WHERE RoomId=@id",
+                        new System.Data.SqlClient.SqlParameter("@name", txtName.Text),
+                        new System.Data.SqlClient.SqlParameter("@price", txtPrice.Value),
+                        new System.Data.SqlClient.SqlParameter("@id", roomId));
+                    AntdUI.Message.success(form, "Cập nhật thành công!");
+                    form.Close();
+                    LoadRooms();
+                }
+                catch (Exception ex)
+                {
+                    AntdUI.Message.error(form, "Lỗi: " + ex.Message);
+                }
+            };
+
+            pnlButtons.Controls.Add(btnCancel);
+            pnlButtons.Controls.Add(btnSave);
+            layout.Controls.Add(pnlButtons, 1, 2);
+
+            form.Controls.Add(layout);
+            form.ShowDialog(this.FindForm());
+        }
+
+        private void ShowRentRoomForm(int roomId, string roomName, decimal roomPrice)
+        {
+            var form = new Form();
+            form.Text = $"Cho thuê {roomName}";
+            form.Size = new Size(550, 580);
+            form.StartPosition = FormStartPosition.CenterParent;
+            form.FormBorderStyle = FormBorderStyle.FixedDialog;
+            form.MaximizeBox = false;
+            form.BackColor = Color.White;
+
+            var mainPanel = new System.Windows.Forms.Panel { Dock = DockStyle.Fill, AutoScroll = true, Padding = new Padding(20) };
+            int y = 10;
+
+            // === THÔNG TIN PHÒNG (Read-only) ===
+            var lblRoomHeader = new System.Windows.Forms.Label { Text = "THÔNG TIN PHÒNG", Font = new Font("Segoe UI", 11, FontStyle.Bold), ForeColor = AppColors.Blue900, Location = new Point(10, y), Size = new Size(500, 25) };
+            mainPanel.Controls.Add(lblRoomHeader); y += 28;
+
+            mainPanel.Controls.Add(new System.Windows.Forms.Label { Text = $"Phòng: {roomName}  |  Giá: {roomPrice:N0} VNĐ/tháng", Font = new Font("Segoe UI", 10), ForeColor = AppColors.Green, Location = new Point(10, y), Size = new Size(500, 22) });
+            y += 35;
+
+            // === THÔNG TIN KHÁCH THUÊ ===
+            var lblCustomerHeader = new System.Windows.Forms.Label { Text = "THÔNG TIN KHÁCH THUÊ", Font = new Font("Segoe UI", 11, FontStyle.Bold), ForeColor = AppColors.Blue900, Location = new Point(10, y), Size = new Size(500, 25) };
+            mainPanel.Controls.Add(lblCustomerHeader); y += 30;
+
+            int lblW = 110, inputW = 180, col2X = 300;
+
+            // Row 1: Họ tên + SĐT
+            mainPanel.Controls.Add(new System.Windows.Forms.Label { Text = "Họ tên *:", Location = new Point(10, y + 5), Size = new Size(lblW, 22) });
+            var txtName = new AntdUI.Input { Location = new Point(10 + lblW, y), Size = new Size(inputW, 35), PlaceholderText = "Nguyễn Văn A" };
+            mainPanel.Controls.Add(txtName);
+
+            mainPanel.Controls.Add(new System.Windows.Forms.Label { Text = "SĐT *:", Location = new Point(col2X, y + 5), Size = new Size(60, 22) });
+            var txtPhone = new AntdUI.Input { Location = new Point(col2X + 60, y), Size = new Size(150, 35), PlaceholderText = "0912345678" };
+            mainPanel.Controls.Add(txtPhone);
+            y += 42;
+
+            // Row 2: CCCD + Email
+            mainPanel.Controls.Add(new System.Windows.Forms.Label { Text = "CCCD *:", Location = new Point(10, y + 5), Size = new Size(lblW, 22) });
+            var txtCCCD = new AntdUI.Input { Location = new Point(10 + lblW, y), Size = new Size(inputW, 35), PlaceholderText = "12 số" };
+            mainPanel.Controls.Add(txtCCCD);
+
+            mainPanel.Controls.Add(new System.Windows.Forms.Label { Text = "Email:", Location = new Point(col2X, y + 5), Size = new Size(60, 22) });
+            var txtEmail = new AntdUI.Input { Location = new Point(col2X + 60, y), Size = new Size(150, 35), PlaceholderText = "email@gmail.com" };
+            mainPanel.Controls.Add(txtEmail);
+            y += 42;
+
+            // Row 3: Địa chỉ
+            mainPanel.Controls.Add(new System.Windows.Forms.Label { Text = "Địa chỉ:", Location = new Point(10, y + 5), Size = new Size(lblW, 22) });
+            var txtAddress = new AntdUI.Input { Location = new Point(10 + lblW, y), Size = new Size(380, 35), PlaceholderText = "Địa chỉ thường trú" };
+            mainPanel.Controls.Add(txtAddress);
+            y += 50;
+
+            // === THÔNG TIN HỢP ĐỒNG ===
+            var lblContractHeader = new System.Windows.Forms.Label { Text = "THÔNG TIN HỢP ĐỒNG", Font = new Font("Segoe UI", 11, FontStyle.Bold), ForeColor = AppColors.Blue900, Location = new Point(10, y), Size = new Size(500, 25) };
+            mainPanel.Controls.Add(lblContractHeader); y += 30;
+
+            // Row 4: Ngày vào + Tiền thuê
+            mainPanel.Controls.Add(new System.Windows.Forms.Label { Text = "Ngày vào:", Location = new Point(10, y + 5), Size = new Size(lblW, 22) });
+            var dateStart = new AntdUI.DatePicker { Location = new Point(10 + lblW, y), Size = new Size(inputW, 35), Value = DateTime.Now };
+            mainPanel.Controls.Add(dateStart);
+
+            mainPanel.Controls.Add(new System.Windows.Forms.Label { Text = "Tiền thuê:", Location = new Point(col2X, y + 5), Size = new Size(70, 22) });
+            var numRent = new AntdUI.InputNumber { Location = new Point(col2X + 70, y), Size = new Size(140, 35), Value = roomPrice };
+            mainPanel.Controls.Add(numRent);
+            y += 42;
+
+            // Row 5: Tiền cọc + Ghi chú
+            mainPanel.Controls.Add(new System.Windows.Forms.Label { Text = "Tiền cọc:", Location = new Point(10, y + 5), Size = new Size(lblW, 22) });
+            var numDeposit = new AntdUI.InputNumber { Location = new Point(10 + lblW, y), Size = new Size(inputW, 35), Value = roomPrice };
+            mainPanel.Controls.Add(numDeposit);
+
+            mainPanel.Controls.Add(new System.Windows.Forms.Label { Text = "Ghi chú:", Location = new Point(col2X, y + 5), Size = new Size(70, 22) });
+            var txtNote = new AntdUI.Input { Location = new Point(col2X + 70, y), Size = new Size(140, 35) };
+            mainPanel.Controls.Add(txtNote);
+            y += 55;
+
+            // === BUTTONS ===
+            var pnlButtons = new FlowLayoutPanel { Location = new Point(10, y), Size = new Size(500, 50), FlowDirection = FlowDirection.RightToLeft };
+
+            var btnCancel = new AntdUI.Button { Text = "Hủy", Size = new Size(80, 40) };
+            btnCancel.Click += (s, e) => form.Close();
+
+            var btnSave = new AntdUI.Button { Text = "Tạo hợp đồng", Type = TTypeMini.Primary, BackColor = AppColors.Green, Size = new Size(130, 40) };
+            btnSave.Click += (s, e) => {
+                // Validation
+                if (string.IsNullOrWhiteSpace(txtName.Text)) { AntdUI.Message.warn(form, "Nhập họ tên khách!"); return; }
+                if (string.IsNullOrWhiteSpace(txtPhone.Text) || txtPhone.Text.Length != 10) { AntdUI.Message.warn(form, "SĐT phải 10 số!"); return; }
+                if (string.IsNullOrWhiteSpace(txtCCCD.Text) || txtCCCD.Text.Length != 12) { AntdUI.Message.warn(form, "CCCD phải 12 số!"); return; }
+
+                try
+                {
+                    // 1. Tạo khách hàng mới
+                    DatabaseHelper.ExecuteNonQuery(
+                        "INSERT INTO Customers (FullName, Phone, CCCD, Email, Address) VALUES (@n, @p, @c, @e, @a)",
+                        new System.Data.SqlClient.SqlParameter("@n", txtName.Text),
+                        new System.Data.SqlClient.SqlParameter("@p", txtPhone.Text),
+                        new System.Data.SqlClient.SqlParameter("@c", txtCCCD.Text),
+                        new System.Data.SqlClient.SqlParameter("@e", string.IsNullOrWhiteSpace(txtEmail.Text) ? DBNull.Value : (object)txtEmail.Text),
+                        new System.Data.SqlClient.SqlParameter("@a", string.IsNullOrWhiteSpace(txtAddress.Text) ? DBNull.Value : (object)txtAddress.Text));
+
+                    // 2. Lấy CustomerId vừa tạo
+                    var customerIdObj = DatabaseHelper.ExecuteScalar("SELECT MAX(CustomerId) FROM Customers");
+                    int customerId = Convert.ToInt32(customerIdObj);
+
+                    // 3. Tạo hợp đồng
+                    DatabaseHelper.ExecuteNonQuery(
+                        "INSERT INTO Contracts (RoomId, CustomerId, StartDate, Deposit, MonthlyRent, IsActive) VALUES (@rid, @cid, @sd, @dep, @rent, 1)",
+                        new System.Data.SqlClient.SqlParameter("@rid", roomId),
+                        new System.Data.SqlClient.SqlParameter("@cid", customerId),
+                        new System.Data.SqlClient.SqlParameter("@sd", dateStart.Value ?? DateTime.Now),
+                        new System.Data.SqlClient.SqlParameter("@dep", numDeposit.Value),
+                        new System.Data.SqlClient.SqlParameter("@rent", numRent.Value));
+
+                    // 4. Cập nhật trạng thái phòng
+                    DatabaseHelper.ExecuteNonQuery("UPDATE Rooms SET Status = 'DangThue' WHERE RoomId = @id",
+                        new System.Data.SqlClient.SqlParameter("@id", roomId));
+
+                    AntdUI.Message.success(form, $"Đã cho thuê {roomName} thành công!");
+                    form.Close();
+                    LoadRooms();
+                }
+                catch (Exception ex)
+                {
+                    AntdUI.Message.error(form, "Lỗi: " + ex.Message);
+                }
+            };
+
+            pnlButtons.Controls.Add(btnCancel);
+            pnlButtons.Controls.Add(btnSave);
+            mainPanel.Controls.Add(pnlButtons);
+
+            form.Controls.Add(mainPanel);
+            form.ShowDialog(this.FindForm());
         }
 
         private void ShowAddRoomForm()

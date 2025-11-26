@@ -101,10 +101,10 @@ namespace QuanLyPhongTro.GUI
             try
             {
                 string statusFilter = "";
-                if (cboStatus.SelectedValue != null)
+                if (cboStatus.SelectedIndex > 0)
                 {
-                    string status = ((SelectItem)cboStatus.SelectedValue).Tag?.ToString();
-                    if (status != "All") statusFilter = $" AND i.Status = '{status}'";
+                    string status = cboStatus.SelectedIndex == 1 ? "ChuaThu" : "DaThu";
+                    statusFilter = $" AND i.Status = '{status}'";
                 }
 
                 string sql = $@"

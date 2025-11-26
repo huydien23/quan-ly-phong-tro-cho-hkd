@@ -68,7 +68,16 @@ namespace QuanLyPhongTro.GUI
             btnNewInvoice.Click += (s, e) => NavigateTo(new UC_Services());
 
             var btnRefresh = CreateActionButton("⟳", Color.FromArgb(100, 116, 139), 980, 20, 40);
-            btnRefresh.Click += (s, e) => { LoadStats(); LoadAlerts(); AntdUI.Message.success(this.FindForm(), "Đã cập nhật!"); };
+            btnRefresh.Click += (s, e) => { 
+                btnRefresh.Enabled = false;
+                btnRefresh.Text = "...";
+                LoadStats(); 
+                LoadAlerts();
+                btnRefresh.Text = "✓";
+                var timer = new Timer { Interval = 1000 };
+                timer.Tick += (ts, te) => { btnRefresh.Text = "⟳"; btnRefresh.Enabled = true; timer.Stop(); timer.Dispose(); };
+                timer.Start();
+            };
 
             pnlHeader.Controls.Add(btnNewContract);
             pnlHeader.Controls.Add(btnNewInvoice);
@@ -94,30 +103,15 @@ namespace QuanLyPhongTro.GUI
             var pnlAlertContainer = CreateModernCard(1080, 200);
             pnlAlertContainer.Margin = new Padding(0, 0, 0, 20);
 
-            var pnlAlertHeader = new System.Windows.Forms.Panel();
-            pnlAlertHeader.Size = new Size(1040, 45);
-            pnlAlertHeader.Location = new Point(20, 10);
-            pnlAlertHeader.BackColor = Color.White;
-
-            var lblAlertIcon = new System.Windows.Forms.Label { 
-                Text = "⚠", 
-                Font = new Font("Segoe UI", 18), 
-                ForeColor = Color.FromArgb(251, 146, 60),
-                Location = new Point(0, 5), 
-                AutoSize = true,
-                BackColor = Color.White
-            };
             var lblAlertTitle = new System.Windows.Forms.Label { 
-                Text = "Cảnh báo cần xử lý", 
+                Text = "⚠ Cảnh báo cần xử lý", 
                 Font = new Font("Segoe UI", 13, FontStyle.Bold), 
-                ForeColor = Color.FromArgb(30, 41, 59),
-                Location = new Point(35, 10), 
+                ForeColor = Color.FromArgb(234, 88, 12),
+                Location = new Point(20, 15), 
                 AutoSize = true,
                 BackColor = Color.White
             };
-            pnlAlertHeader.Controls.Add(lblAlertIcon);
-            pnlAlertHeader.Controls.Add(lblAlertTitle);
-            pnlAlertContainer.Controls.Add(pnlAlertHeader);
+            pnlAlertContainer.Controls.Add(lblAlertTitle);
 
             // Divider line
             var divider = new System.Windows.Forms.Panel();
@@ -224,7 +218,6 @@ namespace QuanLyPhongTro.GUI
             var card = new System.Windows.Forms.Panel();
             card.Size = new Size(200, 120);
             card.Margin = new Padding(0, 0, 15, 0);
-            card.Cursor = Cursors.Hand;
 
             // Store colors for paint event
             card.Tag = new Color[] { color1, color2 };
@@ -270,23 +263,21 @@ namespace QuanLyPhongTro.GUI
             card.Controls.Add(lblTitle);
             card.Controls.Add(lblValue);
 
-            // Hover effect
-            card.MouseEnter += (s, e) => { card.Top -= 3; };
-            card.MouseLeave += (s, e) => { card.Top += 3; };
-
             return card;
         }
 
-        private AntdUI.Button CreateActionButton(string text, Color bgColor, int x, int y, int width = 140)
+        private System.Windows.Forms.Button CreateActionButton(string text, Color bgColor, int x, int y, int width = 140)
         {
-            var btn = new AntdUI.Button();
+            var btn = new System.Windows.Forms.Button();
             btn.Text = text;
             btn.Location = new Point(x, y);
-            btn.Size = new Size(width, 40);
+            btn.Size = new Size(width, 38);
             btn.BackColor = bgColor;
             btn.ForeColor = Color.White;
-            btn.Font = new Font("Segoe UI", 10, FontStyle.Bold);
-            btn.Radius = 8;
+            btn.Font = new Font("Segoe UI", 9, FontStyle.Bold);
+            btn.FlatStyle = FlatStyle.Flat;
+            btn.FlatAppearance.BorderSize = 0;
+            btn.Cursor = Cursors.Hand;
             return btn;
         }
 

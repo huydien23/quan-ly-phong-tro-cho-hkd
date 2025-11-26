@@ -62,7 +62,7 @@ namespace QuanLyPhongTro.GUI
             cboMonth.SelectedIndex = currentMonth - 1;
             cboMonth.Location = new Point(180, 12);
             cboMonth.Size = new Size(100, 36);
-            cboMonth.SelectedIndexChanged += (s, e) => { currentMonth = Convert.ToInt32(((SelectItem)cboMonth.SelectedValue).Tag); LoadData(); };
+            cboMonth.SelectedIndexChanged += (s, e) => { currentMonth = cboMonth.SelectedIndex + 1; LoadData(); };
 
             // Chọn năm
             cboYear = new AntdUI.Select();
@@ -70,7 +70,7 @@ namespace QuanLyPhongTro.GUI
             cboYear.SelectedIndex = 2;
             cboYear.Location = new Point(290, 12);
             cboYear.Size = new Size(80, 36);
-            cboYear.SelectedIndexChanged += (s, e) => { currentYear = Convert.ToInt32(((SelectItem)cboYear.SelectedValue).Tag); LoadData(); };
+            cboYear.SelectedIndexChanged += (s, e) => { currentYear = DateTime.Now.Year - 2 + cboYear.SelectedIndex; LoadData(); };
 
             var btnEdit = new AntdUI.Button();
             btnEdit.Text = "Nhập chỉ số";
@@ -144,14 +144,16 @@ namespace QuanLyPhongTro.GUI
 
             var form = new Form();
             form.Text = $"Nhập chỉ số - {roomName} - Tháng {currentMonth}/{currentYear}";
-            form.Size = new Size(400, 350);
+            form.Size = new Size(350, 280);
             form.StartPosition = FormStartPosition.CenterParent;
             form.FormBorderStyle = FormBorderStyle.FixedDialog;
             form.MaximizeBox = false;
 
-            var layout = new TableLayoutPanel { Dock = DockStyle.Fill, Padding = new Padding(20), ColumnCount = 2, RowCount = 6 };
-            layout.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 100));
+            var layout = new TableLayoutPanel { Dock = DockStyle.Fill, Padding = new Padding(20), ColumnCount = 2, RowCount = 5 };
+            layout.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 80));
             layout.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100));
+            for (int i = 0; i < 4; i++) layout.RowStyles.Add(new RowStyle(SizeType.Absolute, 40));
+            layout.RowStyles.Add(new RowStyle(SizeType.Absolute, 50));
 
             layout.Controls.Add(new System.Windows.Forms.Label { Text = "Điện cũ:", TextAlign = ContentAlignment.MiddleRight, Dock = DockStyle.Fill }, 0, 0);
             var numElecOld = new AntdUI.InputNumber { Dock = DockStyle.Fill, Value = Convert.ToDecimal(row["ElecOld"]) };
@@ -169,7 +171,7 @@ namespace QuanLyPhongTro.GUI
             var numWaterNew = new AntdUI.InputNumber { Dock = DockStyle.Fill, Value = Convert.ToDecimal(row["WaterNew"]) };
             layout.Controls.Add(numWaterNew, 1, 3);
 
-            var btnSave = new AntdUI.Button { Text = "Lưu", Type = TTypeMini.Primary, BackColor = AppColors.Blue600, Dock = DockStyle.Fill };
+            var btnSave = new AntdUI.Button { Text = "Lưu", Type = TTypeMini.Primary, BackColor = AppColors.Blue600, Size = new Size(100, 38), Anchor = AnchorStyles.Right };
             btnSave.Click += (s, e) => {
                 try
                 {
@@ -214,7 +216,7 @@ namespace QuanLyPhongTro.GUI
                     AntdUI.Message.error(form, "Lỗi: " + ex.Message);
                 }
             };
-            layout.Controls.Add(btnSave, 1, 5);
+            layout.Controls.Add(btnSave, 1, 4);
 
             form.Controls.Add(layout);
             form.ShowDialog(this.FindForm());
@@ -230,8 +232,22 @@ namespace QuanLyPhongTro.GUI
                 decimal elecPrice = priceElec != null ? Convert.ToDecimal(priceElec) : 4000;
                 decimal waterPrice = priceWater != null ? Convert.ToDecimal(priceWater) : 10000;
 
-                // Cập nhật giá và tổng tiền cho tất cả hóa đơn tháng này
-                string sql = @"
+                // 1. Tạo hóa đơn mới cho các hợp đồng chưa có hóa đơn tháng này
+                string insertSql = @"
+                    INSERT INTO Invoices (ContractId, Month, Year, RoomPrice, ElecOld, ElecNew, WaterOld, WaterNew, ElecPrice, WaterPrice, TotalAmount, Status)
+                    SELECT c.ContractId, @m, @y, c.MonthlyRent, 0, 0, 0, 0, @ep, @wp, c.MonthlyRent, 'ChuaThu'
+                    FROM Contracts c
+                    WHERE c.IsActive = 1 
+                    AND NOT EXISTS (SELECT 1 FROM Invoices WHERE ContractId = c.ContractId AND Month = @m AND Year = @y)";
+
+                int inserted = DatabaseHelper.ExecuteNonQuery(insertSql,
+                    new System.Data.SqlClient.SqlParameter("@m", currentMonth),
+                    new System.Data.SqlClient.SqlParameter("@y", currentYear),
+                    new System.Data.SqlClient.SqlParameter("@ep", elecPrice),
+                    new System.Data.SqlClient.SqlParameter("@wp", waterPrice));
+
+                // 2. Cập nhật giá và tổng tiền cho tất cả hóa đơn tháng này
+                string updateSql = @"
                     UPDATE i SET 
                         ElecPrice = @ep,
                         WaterPrice = @wp,
@@ -241,13 +257,14 @@ namespace QuanLyPhongTro.GUI
                     INNER JOIN Contracts c ON i.ContractId = c.ContractId
                     WHERE i.Month = @m AND i.Year = @y";
 
-                DatabaseHelper.ExecuteNonQuery(sql,
+                DatabaseHelper.ExecuteNonQuery(updateSql,
                     new System.Data.SqlClient.SqlParameter("@ep", elecPrice),
                     new System.Data.SqlClient.SqlParameter("@wp", waterPrice),
                     new System.Data.SqlClient.SqlParameter("@m", currentMonth),
                     new System.Data.SqlClient.SqlParameter("@y", currentYear));
 
-                AntdUI.Message.success(this.FindForm(), $"Đã tạo hóa đơn tháng {currentMonth}/{currentYear}!");
+                LoadData();
+                AntdUI.Message.success(this.FindForm(), $"Đã tạo {inserted} hóa đơn mới tháng {currentMonth}/{currentYear}!");
             }
             catch (Exception ex)
             {

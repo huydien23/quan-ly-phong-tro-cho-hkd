@@ -140,15 +140,25 @@ namespace QuanLyPhongTro.GUI
         {
             LoadComboData();
 
+            // Kiểm tra điều kiện
             if (dtRooms.Rows.Count == 0)
             {
-                AntdUI.Message.warn(this.FindForm(), "Không có phòng trống!");
+                AntdUI.Message.warn(this.FindForm(), "Không có phòng trống! Vui lòng thêm phòng trước.");
+                return;
+            }
+
+            if (dtCustomers.Rows.Count == 0)
+            {
+                if (VNDialog.Confirm("Chưa có khách hàng nào! Bạn có muốn thêm khách mới ngay?"))
+                {
+                    ShowQuickAddCustomerForm(() => ShowContractForm(null));
+                }
                 return;
             }
 
             var form = new Form();
             form.Text = "Tạo Hợp Đồng Mới";
-            form.Size = new Size(450, 450);
+            form.Size = new Size(500, 500);
             form.StartPosition = FormStartPosition.CenterParent;
             form.FormBorderStyle = FormBorderStyle.FixedDialog;
             form.MaximizeBox = false;
@@ -157,10 +167,11 @@ namespace QuanLyPhongTro.GUI
             var layout = new TableLayoutPanel();
             layout.Dock = DockStyle.Fill;
             layout.Padding = new Padding(20);
-            layout.ColumnCount = 2;
+            layout.ColumnCount = 3;
             layout.RowCount = 7;
-            layout.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 120));
+            layout.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 100));
             layout.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100));
+            layout.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 80));
             for (int i = 0; i < 7; i++)
                 layout.RowStyles.Add(new RowStyle(SizeType.Absolute, 50));
 
@@ -171,8 +182,9 @@ namespace QuanLyPhongTro.GUI
                 cboRoom.Items.Add(new SelectItem(row["RoomName"].ToString() + " - " + Convert.ToDecimal(row["Price"]).ToString("N0") + "đ", row["RoomId"]));
             if (cboRoom.Items.Count > 0) cboRoom.SelectedIndex = 0;
             layout.Controls.Add(cboRoom, 1, 0);
+            layout.SetColumnSpan(cboRoom, 2);
 
-            // Chọn khách
+            // Chọn khách + nút thêm mới
             layout.Controls.Add(new System.Windows.Forms.Label { Text = "Khách thuê:", TextAlign = ContentAlignment.MiddleRight, Dock = DockStyle.Fill }, 0, 1);
             var cboCustomer = new AntdUI.Select { Dock = DockStyle.Fill };
             foreach (DataRow row in dtCustomers.Rows)
@@ -180,42 +192,74 @@ namespace QuanLyPhongTro.GUI
             if (cboCustomer.Items.Count > 0) cboCustomer.SelectedIndex = 0;
             layout.Controls.Add(cboCustomer, 1, 1);
 
+            var btnAddCustomer = new AntdUI.Button { Text = "+ Mới", Size = new Size(70, 35), Dock = DockStyle.Fill };
+            btnAddCustomer.Click += (s, e) => {
+                ShowQuickAddCustomerForm(() => {
+                    // Reload customer list
+                    dtCustomers = DatabaseHelper.ExecuteQuery("SELECT CustomerId, FullName, Phone FROM Customers ORDER BY CustomerId DESC");
+                    cboCustomer.Items.Clear();
+                    foreach (DataRow row in dtCustomers.Rows)
+                        cboCustomer.Items.Add(new SelectItem(row["FullName"].ToString() + " - " + row["Phone"].ToString(), row["CustomerId"]));
+                    if (cboCustomer.Items.Count > 0) cboCustomer.SelectedIndex = 0;
+                });
+            };
+            layout.Controls.Add(btnAddCustomer, 2, 1);
+
             // Ngày bắt đầu
             layout.Controls.Add(new System.Windows.Forms.Label { Text = "Ngày vào:", TextAlign = ContentAlignment.MiddleRight, Dock = DockStyle.Fill }, 0, 2);
             var dateStart = new AntdUI.DatePicker { Dock = DockStyle.Fill, Value = DateTime.Now };
             layout.Controls.Add(dateStart, 1, 2);
+            layout.SetColumnSpan(dateStart, 2);
 
             // Tiền thuê
             layout.Controls.Add(new System.Windows.Forms.Label { Text = "Tiền thuê:", TextAlign = ContentAlignment.MiddleRight, Dock = DockStyle.Fill }, 0, 3);
             var numRent = new AntdUI.InputNumber { Dock = DockStyle.Fill, Value = 0 };
             // Auto fill giá phòng khi chọn
             cboRoom.SelectedIndexChanged += (s, e) => {
-                if (cboRoom.SelectedValue != null)
+                if (cboRoom.SelectedIndex >= 0 && cboRoom.SelectedIndex < dtRooms.Rows.Count)
                 {
-                    int roomId = Convert.ToInt32(((SelectItem)cboRoom.SelectedValue).Tag);
-                    var rows = dtRooms.Select($"RoomId = {roomId}");
-                    if (rows.Length > 0) numRent.Value = Convert.ToDecimal(rows[0]["Price"]);
+                    numRent.Value = Convert.ToDecimal(dtRooms.Rows[cboRoom.SelectedIndex]["Price"]);
                 }
             };
             if (dtRooms.Rows.Count > 0) numRent.Value = Convert.ToDecimal(dtRooms.Rows[0]["Price"]);
             layout.Controls.Add(numRent, 1, 3);
+            layout.SetColumnSpan(numRent, 2);
 
             // Tiền cọc
             layout.Controls.Add(new System.Windows.Forms.Label { Text = "Tiền cọc:", TextAlign = ContentAlignment.MiddleRight, Dock = DockStyle.Fill }, 0, 4);
             var numDeposit = new AntdUI.InputNumber { Dock = DockStyle.Fill, Value = 0 };
             layout.Controls.Add(numDeposit, 1, 4);
+            layout.SetColumnSpan(numDeposit, 2);
+
+            // Ghi chú
+            layout.Controls.Add(new System.Windows.Forms.Label { Text = "Ghi chú:", TextAlign = ContentAlignment.MiddleRight, Dock = DockStyle.Fill }, 0, 5);
+            var txtNote = new AntdUI.Input { Dock = DockStyle.Fill, PlaceholderText = "Ghi chú thêm (nếu có)" };
+            layout.Controls.Add(txtNote, 1, 5);
+            layout.SetColumnSpan(txtNote, 2);
 
             // Buttons
             var pnlButtons = new FlowLayoutPanel { Dock = DockStyle.Fill, FlowDirection = FlowDirection.RightToLeft };
             var btnCancel = new AntdUI.Button { Text = "Hủy", Size = new Size(80, 35) };
             btnCancel.Click += (s, e) => form.Close();
 
-            var btnSave = new AntdUI.Button { Text = "Lưu", Type = TTypeMini.Primary, BackColor = AppColors.Green, Size = new Size(80, 35) };
+            var btnSave = new AntdUI.Button { Text = "Tạo HĐ", Type = TTypeMini.Primary, BackColor = AppColors.Green, Size = new Size(100, 35) };
             btnSave.Click += (s, e) => {
                 try
                 {
-                    int roomId = Convert.ToInt32(((SelectItem)cboRoom.SelectedValue).Tag);
-                    int customerId = Convert.ToInt32(((SelectItem)cboCustomer.SelectedValue).Tag);
+                    // Lấy ID từ index thay vì cast SelectItem
+                    if (cboRoom.SelectedIndex < 0 || cboRoom.SelectedIndex >= dtRooms.Rows.Count)
+                    {
+                        AntdUI.Message.warn(form, "Vui lòng chọn phòng!");
+                        return;
+                    }
+                    if (cboCustomer.SelectedIndex < 0 || cboCustomer.SelectedIndex >= dtCustomers.Rows.Count)
+                    {
+                        AntdUI.Message.warn(form, "Vui lòng chọn khách!");
+                        return;
+                    }
+
+                    int roomId = Convert.ToInt32(dtRooms.Rows[cboRoom.SelectedIndex]["RoomId"]);
+                    int customerId = Convert.ToInt32(dtCustomers.Rows[cboCustomer.SelectedIndex]["CustomerId"]);
 
                     // Insert hợp đồng
                     string sql = @"INSERT INTO Contracts (RoomId, CustomerId, StartDate, Deposit, MonthlyRent, IsActive) 
@@ -244,6 +288,74 @@ namespace QuanLyPhongTro.GUI
             pnlButtons.Controls.Add(btnCancel);
             pnlButtons.Controls.Add(btnSave);
             layout.Controls.Add(pnlButtons, 1, 6);
+            layout.SetColumnSpan(pnlButtons, 2);
+
+            form.Controls.Add(layout);
+            form.ShowDialog(this.FindForm());
+        }
+
+        private void ShowQuickAddCustomerForm(Action onSuccess)
+        {
+            var form = new Form();
+            form.Text = "Thêm khách nhanh";
+            form.Size = new Size(400, 280);
+            form.StartPosition = FormStartPosition.CenterParent;
+            form.FormBorderStyle = FormBorderStyle.FixedDialog;
+            form.MaximizeBox = false;
+
+            var layout = new TableLayoutPanel { Dock = DockStyle.Fill, Padding = new Padding(20), ColumnCount = 2, RowCount = 5 };
+            layout.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 100));
+            layout.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100));
+            for (int i = 0; i < 4; i++) layout.RowStyles.Add(new RowStyle(SizeType.Absolute, 45));
+            layout.RowStyles.Add(new RowStyle(SizeType.Absolute, 50));
+
+            layout.Controls.Add(new System.Windows.Forms.Label { Text = "Họ tên *:", TextAlign = ContentAlignment.MiddleRight, Dock = DockStyle.Fill }, 0, 0);
+            var txtName = new AntdUI.Input { Dock = DockStyle.Fill, PlaceholderText = "Nguyễn Văn A" };
+            layout.Controls.Add(txtName, 1, 0);
+
+            layout.Controls.Add(new System.Windows.Forms.Label { Text = "SĐT *:", TextAlign = ContentAlignment.MiddleRight, Dock = DockStyle.Fill }, 0, 1);
+            var txtPhone = new AntdUI.Input { Dock = DockStyle.Fill, PlaceholderText = "0912345678" };
+            layout.Controls.Add(txtPhone, 1, 1);
+
+            layout.Controls.Add(new System.Windows.Forms.Label { Text = "CCCD *:", TextAlign = ContentAlignment.MiddleRight, Dock = DockStyle.Fill }, 0, 2);
+            var txtCCCD = new AntdUI.Input { Dock = DockStyle.Fill, PlaceholderText = "12 số" };
+            layout.Controls.Add(txtCCCD, 1, 2);
+
+            layout.Controls.Add(new System.Windows.Forms.Label { Text = "Địa chỉ:", TextAlign = ContentAlignment.MiddleRight, Dock = DockStyle.Fill }, 0, 3);
+            var txtAddress = new AntdUI.Input { Dock = DockStyle.Fill, PlaceholderText = "Địa chỉ thường trú" };
+            layout.Controls.Add(txtAddress, 1, 3);
+
+            var pnlBtn = new FlowLayoutPanel { Dock = DockStyle.Fill, FlowDirection = FlowDirection.RightToLeft };
+            var btnCancel = new AntdUI.Button { Text = "Hủy", Size = new Size(70, 35) };
+            btnCancel.Click += (s, e) => form.Close();
+
+            var btnSave = new AntdUI.Button { Text = "Lưu", Type = TTypeMini.Primary, BackColor = AppColors.Green, Size = new Size(70, 35) };
+            btnSave.Click += (s, e) => {
+                if (string.IsNullOrWhiteSpace(txtName.Text)) { AntdUI.Message.warn(form, "Nhập họ tên!"); return; }
+                if (string.IsNullOrWhiteSpace(txtPhone.Text) || txtPhone.Text.Length != 10) { AntdUI.Message.warn(form, "SĐT phải 10 số!"); return; }
+                if (string.IsNullOrWhiteSpace(txtCCCD.Text) || txtCCCD.Text.Length != 12) { AntdUI.Message.warn(form, "CCCD phải 12 số!"); return; }
+
+                try
+                {
+                    DatabaseHelper.ExecuteNonQuery(
+                        "INSERT INTO Customers (FullName, Phone, CCCD, Address) VALUES (@n, @p, @c, @a)",
+                        new System.Data.SqlClient.SqlParameter("@n", txtName.Text),
+                        new System.Data.SqlClient.SqlParameter("@p", txtPhone.Text),
+                        new System.Data.SqlClient.SqlParameter("@c", txtCCCD.Text),
+                        new System.Data.SqlClient.SqlParameter("@a", (object)txtAddress.Text ?? DBNull.Value));
+                    AntdUI.Message.success(form, "Đã thêm khách!");
+                    form.Close();
+                    onSuccess?.Invoke();
+                }
+                catch (Exception ex)
+                {
+                    AntdUI.Message.error(form, "Lỗi: " + ex.Message);
+                }
+            };
+
+            pnlBtn.Controls.Add(btnCancel);
+            pnlBtn.Controls.Add(btnSave);
+            layout.Controls.Add(pnlBtn, 1, 4);
 
             form.Controls.Add(layout);
             form.ShowDialog(this.FindForm());
