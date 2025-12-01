@@ -3,6 +3,7 @@ using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
 using AntdUI;
+using QuanLyPhongTro.BLL;
 using QuanLyPhongTro.Core;
 using QuanLyPhongTro.DAL;
 

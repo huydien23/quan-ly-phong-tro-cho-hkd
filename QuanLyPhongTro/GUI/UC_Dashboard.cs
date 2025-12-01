@@ -6,6 +6,7 @@ using System.Drawing.Drawing2D;
 using System.Windows.Forms;
 using WinChart = System.Windows.Forms.DataVisualization.Charting;
 using AntdUI; 
+using QuanLyPhongTro.BLL;
 using QuanLyPhongTro.Core;
 using QuanLyPhongTro.DAL;
 
@@ -13,6 +14,9 @@ namespace QuanLyPhongTro.GUI
 {
     public class UC_Dashboard : UserControl
     {
+        private readonly InvoiceBLL _invoiceBLL = new InvoiceBLL();
+        private readonly RoomBLL _roomBLL = new RoomBLL();
+        private readonly TransactionBLL _transactionBLL = new TransactionBLL();
         private System.Windows.Forms.Label lblTotalRooms, lblOccupied, lblEmpty, lblRevenue, lblUnpaid;
         private AntdUI.Progress progressTax;
         private System.Windows.Forms.Label lblTaxAmount, lblTaxStatus;

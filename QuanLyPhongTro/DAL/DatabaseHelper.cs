@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 
@@ -10,8 +9,13 @@ namespace QuanLyPhongTro.DAL
     /// </summary>
     public class DatabaseHelper : IDisposable
     {
-        private static readonly string _connStr = ConfigurationManager.ConnectionStrings["QuanLyPhongTroDB"]?.ConnectionString
-            ?? throw new InvalidOperationException("Connection string 'QuanLyPhongTroDB' not found in App.config");
+        private static readonly string _connStr = GetConnectionString();
+
+        private static string GetConnectionString()
+        {
+            // Connection string - thay đổi theo cấu hình của bạn
+            return @"Data Source=HUYDIEN;Initial Catalog=QuanLyPhongTroDB;Integrated Security=True";
+        }
 
         private SqlConnection _connection;
         private SqlTransaction _transaction;

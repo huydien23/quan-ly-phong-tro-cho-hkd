@@ -3,17 +3,22 @@ using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
 using AntdUI;
+using QuanLyPhongTro.BLL;
 using QuanLyPhongTro.Core;
 using QuanLyPhongTro.DAL;
+using QuanLyPhongTro.DTO;
 
 namespace QuanLyPhongTro.GUI
 {
     public class UC_Vehicles : UserControl
     {
         private AntdUI.Table table;
+        private readonly VehicleBLL _vehicleBLL;
+        private int selectedVehicleId = -1;
 
         public UC_Vehicles()
         {
+            _vehicleBLL = new VehicleBLL();
             this.BackColor = AppColors.Blue50;
             InitUI();
             LoadData();

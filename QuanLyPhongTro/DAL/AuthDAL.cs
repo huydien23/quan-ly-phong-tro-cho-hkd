@@ -9,7 +9,7 @@ namespace QuanLyPhongTro.DAL
         public UserDTO GetUserByCredentials(string username, string passwordHash)
         {
             const string sql = @"
-                SELECT Id, Username, FullName, Role 
+                SELECT Username, FullName, Role 
                 FROM Users 
                 WHERE Username = @Username AND PasswordHash = @PasswordHash";
 
@@ -22,24 +22,24 @@ namespace QuanLyPhongTro.DAL
 
         public UserDTO GetUserByUsername(string username)
         {
-            const string sql = "SELECT Id, Username, FullName, Role FROM Users WHERE Username = @Username";
+            const string sql = "SELECT Username, FullName, Role FROM Users WHERE Username = @Username";
             var dt = DatabaseHelper.ExecuteQuery(sql, Param("@Username", username));
             return dt.Rows.Count > 0 ? MapToObject<UserDTO>(dt.Rows[0]) : null;
         }
 
-        public bool UpdatePassword(int userId, string newPasswordHash)
+        public bool UpdatePassword(string username, string newPasswordHash)
         {
-            const string sql = "UPDATE Users SET PasswordHash = @PasswordHash WHERE Id = @Id";
+            const string sql = "UPDATE Users SET PasswordHash = @PasswordHash WHERE Username = @Username";
             return DatabaseHelper.ExecuteNonQuery(sql,
-                Param("@Id", userId),
+                Param("@Username", username),
                 Param("@PasswordHash", newPasswordHash)) > 0;
         }
 
-        public bool UpdateProfile(int userId, string fullName)
+        public bool UpdateProfile(string username, string fullName)
         {
-            const string sql = "UPDATE Users SET FullName = @FullName WHERE Id = @Id";
+            const string sql = "UPDATE Users SET FullName = @FullName WHERE Username = @Username";
             return DatabaseHelper.ExecuteNonQuery(sql,
-                Param("@Id", userId),
+                Param("@Username", username),
                 Param("@FullName", fullName)) > 0;
         }
     }

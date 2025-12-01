@@ -3,6 +3,7 @@ using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
 using AntdUI;
+using QuanLyPhongTro.BLL;
 using QuanLyPhongTro.Core;
 using QuanLyPhongTro.DAL;
 
@@ -13,9 +14,13 @@ namespace QuanLyPhongTro.GUI
         private AntdUI.Table table;
         private AntdUI.Input txtSearch;
         private int selectedCustomerId = -1;
+        private readonly CustomerBLL _customerBLL;
+        private readonly VehicleBLL _vehicleBLL;
 
         public UC_Customers()
         {
+            _customerBLL = new CustomerBLL();
+            _vehicleBLL = new VehicleBLL();
             this.BackColor = AppColors.Blue50;
             InitUI();
             LoadData();

@@ -29,7 +29,7 @@ namespace QuanLyPhongTro.BLL
         /// <summary>
         /// Đổi mật khẩu
         /// </summary>
-        public OperationResult ChangePassword(int userId, string oldPassword, string newPassword)
+        public OperationResult ChangePassword(string oldPassword, string newPassword)
         {
             if (string.IsNullOrWhiteSpace(newPassword))
                 return OperationResult.Fail("Mật khẩu mới không được để trống");
@@ -46,7 +46,7 @@ namespace QuanLyPhongTro.BLL
                 return OperationResult.Fail("Mật khẩu cũ không đúng");
 
             string newHash = ComputeSha256Hash(newPassword);
-            bool success = _authDAL.UpdatePassword(userId, newHash);
+            bool success = _authDAL.UpdatePassword(CurrentUser.Username, newHash);
 
             return success 
                 ? OperationResult.Success("Đổi mật khẩu thành công") 
@@ -97,18 +97,16 @@ namespace QuanLyPhongTro.BLL
     /// </summary>
     public static class CurrentUser
     {
-        public static int Id { get; set; }
         public static string Username { get; set; }
         public static string FullName { get; set; }
         public static string Role { get; set; }
 
-        public static bool IsLoggedIn => Id > 0;
+        public static bool IsLoggedIn => !string.IsNullOrEmpty(Username);
 
         public static void SetUser(UserDTO user)
         {
             if (user != null)
             {
-                Id = user.Id;
                 Username = user.Username;
                 FullName = user.FullName;
                 Role = user.Role;
@@ -117,7 +115,6 @@ namespace QuanLyPhongTro.BLL
 
         public static void Clear()
         {
-            Id = 0;
             Username = null;
             FullName = null;
             Role = null;

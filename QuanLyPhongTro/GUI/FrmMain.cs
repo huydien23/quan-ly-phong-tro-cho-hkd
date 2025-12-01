@@ -4,6 +4,7 @@ using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Windows.Forms;
 using AntdUI;
+using QuanLyPhongTro.BLL;
 using QuanLyPhongTro.Core;
 
 namespace QuanLyPhongTro.GUI
@@ -197,20 +198,28 @@ namespace QuanLyPhongTro.GUI
             var btnRooms = CreateMenuButton("Sơ Đồ Phòng", () => SwitchPage(new UC_Rooms()));
             var btnCustomers = CreateMenuButton("Khách Thuê", () => SwitchPage(new UC_Customers()));
             var btnContracts = CreateMenuButton("Hợp Đồng", () => SwitchPage(new UC_Contracts()));
+            var btnVehicles = CreateMenuButton("Xe Cộ", () => SwitchPage(new UC_Vehicles()));
             sidebarLayout.Controls.Add(btnRooms);
             sidebarLayout.Controls.Add(btnCustomers);
             sidebarLayout.Controls.Add(btnContracts);
-            menuButtons.AddRange(new[] { btnRooms, btnCustomers, btnContracts });
+            sidebarLayout.Controls.Add(btnVehicles);
+            menuButtons.AddRange(new[] { btnRooms, btnCustomers, btnContracts, btnVehicles });
 
-            // Group 3: Nghiệp vụ
-            sidebarLayout.Controls.Add(CreateGroupLabel("NGHIỆP VỤ"));
-            var btnServices = CreateMenuButton("Dịch Vụ", () => SwitchPage(new UC_Services()));
+            // Group 3: Thu chi & Hóa đơn
+            sidebarLayout.Controls.Add(CreateGroupLabel("THU CHI"));
+            var btnServices = CreateMenuButton("Ghi Chỉ Số", () => SwitchPage(new UC_Services()));
             var btnInvoices = CreateMenuButton("Hóa Đơn", () => SwitchPage(new UC_Invoices()));
-            var btnResidence = CreateMenuButton("Tạm Trú", () => SwitchPage(new UC_Residence()));
+            var btnTransactions = CreateMenuButton("Sổ Thu Chi", () => SwitchPage(new UC_Transactions()));
             sidebarLayout.Controls.Add(btnServices);
             sidebarLayout.Controls.Add(btnInvoices);
+            sidebarLayout.Controls.Add(btnTransactions);
+            menuButtons.AddRange(new[] { btnServices, btnInvoices, btnTransactions });
+
+            // Group 4: Khác
+            sidebarLayout.Controls.Add(CreateGroupLabel("KHÁC"));
+            var btnResidence = CreateMenuButton("Tạm Trú", () => SwitchPage(new UC_Residence()));
             sidebarLayout.Controls.Add(btnResidence);
-            menuButtons.AddRange(new[] { btnServices, btnInvoices, btnResidence });
+            menuButtons.Add(btnResidence);
 
             // Group 4: Hệ thống
             sidebarLayout.Controls.Add(CreateGroupLabel("HỆ THỐNG"));

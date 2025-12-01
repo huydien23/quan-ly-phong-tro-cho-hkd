@@ -37,6 +37,7 @@
       <HintPath>..\packages\AntdUI.2.2.1\lib\net46\AntdUI.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.SqlClient, Version=4.6.2.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Data.SqlClient.4.9.0\lib\net462\System.Data.SqlClient.dll</HintPath>
@@ -56,26 +57,42 @@
   <ItemGroup>
     <Compile Include="BLL\AuthBLL.cs" />
     <Compile Include="BLL\ContractBLL.cs" />
+    <Compile Include="BLL\CustomerBLL.cs" />
     <Compile Include="BLL\InvoiceBLL.cs" />
     <Compile Include="BLL\RoomBLL.cs" />
+    <Compile Include="BLL\ServiceBLL.cs" />
+    <Compile Include="BLL\TransactionBLL.cs" />
+    <Compile Include="BLL\VehicleBLL.cs" />
     <Compile Include="Core\AppColors.cs" />
     <Compile Include="Core\DataHelper.cs" />
     <Compile Include="Core\ExportHelper.cs" />
     <Compile Include="Core\VietnameseLocalization.cs" />
     <Compile Include="Core\VNDialog.cs" />
     <Compile Include="DAL\AuthDAL.cs" />
+    <Compile Include="DAL\BaseRepository.cs" />
+    <Compile Include="DAL\CoOccupantDAL.cs" />
     <Compile Include="DAL\ContractDAL.cs" />
     <Compile Include="DAL\CustomerDAL.cs" />
     <Compile Include="DAL\DatabaseHelper.cs" />
     <Compile Include="DAL\InvoiceDAL.cs" />
+    <Compile Include="DAL\RoomAssetDAL.cs" />
     <Compile Include="DAL\RoomDAL.cs" />
+    <Compile Include="DAL\ServiceDAL.cs" />
     <Compile Include="DAL\SettingDAL.cs" />
+    <Compile Include="DAL\TransactionDAL.cs" />
+    <Compile Include="DAL\VehicleDAL.cs" />
+    <Compile Include="DTO\CoOccupantDTO.cs" />
     <Compile Include="DTO\ContractDTO.cs" />
+    <Compile Include="DTO\CustomerDebtDTO.cs" />
     <Compile Include="DTO\CustomerDTO.cs" />
     <Compile Include="DTO\InvoiceDTO.cs" />
+    <Compile Include="DTO\RoomAssetDTO.cs" />
     <Compile Include="DTO\RoomDTO.cs" />
+    <Compile Include="DTO\ServiceDTO.cs" />
     <Compile Include="DTO\SettingDTO.cs" />
+    <Compile Include="DTO\TransactionDTO.cs" />
     <Compile Include="DTO\UserDTO.cs" />
+    <Compile Include="DTO\VehicleDTO.cs" />
     <Compile Include="GUI\FrmLogin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -134,6 +151,9 @@
   <ItemGroup />
   <ItemGroup>
     <Compile Include="GUI\UC_Customers.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\UC_Transactions.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="GUI\UC_Vehicles.cs">

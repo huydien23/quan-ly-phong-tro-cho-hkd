@@ -4,6 +4,7 @@ using System.Drawing;
 using System.Drawing.Printing;
 using System.Windows.Forms;
 using AntdUI;
+using QuanLyPhongTro.BLL;
 using QuanLyPhongTro.Core;
 using QuanLyPhongTro.DAL;
 
@@ -14,9 +15,13 @@ namespace QuanLyPhongTro.GUI
         private AntdUI.Table table;
         private AntdUI.Select cboStatus;
         private DataRow selectedInvoice;
+        private readonly InvoiceBLL _invoiceBLL;
+        private readonly TransactionBLL _transactionBLL;
 
         public UC_Invoices()
         {
+            _invoiceBLL = new InvoiceBLL();
+            _transactionBLL = new TransactionBLL();
             this.BackColor = AppColors.Blue50;
             InitUI();
             LoadData();

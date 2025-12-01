@@ -1,4 +1,5 @@
 ﻿using AntdUI;
+using QuanLyPhongTro.BLL;
 using QuanLyPhongTro.Core;
 using QuanLyPhongTro.DAL;
 using System;
@@ -14,9 +15,15 @@ namespace QuanLyPhongTro.GUI
         private DataTable dtRooms;
         private DataTable dtCustomers;
         private int selectedContractId = -1;
+        private readonly ContractBLL _contractBLL;
+        private readonly RoomBLL _roomBLL;
+        private readonly CustomerBLL _customerBLL;
 
         public UC_Contracts()
         {
+            _contractBLL = new ContractBLL();
+            _roomBLL = new RoomBLL();
+            _customerBLL = new CustomerBLL();
             this.BackColor = AppColors.Blue50;
             InitUI();
             LoadData();
@@ -656,29 +663,29 @@ namespace QuanLyPhongTro.GUI
             int months = ((DateTime.Now.Year - start.Year) * 12) + DateTime.Now.Month - start.Month;
 
             string info = $@"
-══════════════════════════════════════════
-           CHI TIẾT HỢP ĐỒNG #{selectedContractId}
-══════════════════════════════════════════
-THÔNG TIN PHÒNG
-  Phòng:         {d["RoomName"]}
-  Tiền thuê:     {Convert.ToDecimal(d["MonthlyRent"]):N0} VNĐ/tháng
-  Tiền cọc:      {Convert.ToDecimal(d["Deposit"]):N0} VNĐ
-──────────────────────────────────────────
-THÔNG TIN KHÁCH
-  Họ tên:        {d["FullName"]}
-  SĐT:           {d["Phone"]}
-  CCCD:          {d["CCCD"]}
-  Địa chỉ:       {d["Address"]}
-──────────────────────────────────────────
-THỜI GIAN
-  Ngày vào:      {start:dd/MM/yyyy}
-  Số tháng thuê: {months} tháng
-  Trạng thái:    {(Convert.ToInt32(d["IsActive"]) == 1 ? "Đang thuê" : "Đã kết thúc")}
-──────────────────────────────────────────
-THANH TOÁN
-  Số hóa đơn:    {d["TotalInvoices"]}
-  Đã thu:        {Convert.ToDecimal(d["TotalPaid"]):N0} VNĐ
-══════════════════════════════════════════";
+            ══════════════════════════════════════════
+                    CHI TIẾT HỢP ĐỒNG #{selectedContractId}
+            ══════════════════════════════════════════
+            THÔNG TIN PHÒNG
+            Phòng:         {d["RoomName"]}
+            Tiền thuê:     {Convert.ToDecimal(d["MonthlyRent"]):N0} VNĐ/tháng
+            Tiền cọc:      {Convert.ToDecimal(d["Deposit"]):N0} VNĐ
+            ──────────────────────────────────────────
+            THÔNG TIN KHÁCH
+            Họ tên:        {d["FullName"]}
+            SĐT:           {d["Phone"]}
+            CCCD:          {d["CCCD"]}
+            Địa chỉ:       {d["Address"]}
+            ──────────────────────────────────────────
+            THỜI GIAN
+            Ngày vào:      {start:dd/MM/yyyy}
+            Số tháng thuê: {months} tháng
+            Trạng thái:    {(Convert.ToInt32(d["IsActive"]) == 1 ? "Đang thuê" : "Đã kết thúc")}
+            ──────────────────────────────────────────
+            THANH TOÁN
+            Số hóa đơn:    {d["TotalInvoices"]}
+            Đã thu:        {Convert.ToDecimal(d["TotalPaid"]):N0} VNĐ
+            ══════════════════════════════════════════";
 
             MessageBox.Show(info, "Chi tiết hợp đồng", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }

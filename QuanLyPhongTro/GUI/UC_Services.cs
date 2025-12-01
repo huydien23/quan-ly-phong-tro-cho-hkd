@@ -3,6 +3,7 @@ using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
 using AntdUI;
+using QuanLyPhongTro.BLL;
 using QuanLyPhongTro.Core;
 using QuanLyPhongTro.DAL;
 
@@ -15,9 +16,13 @@ namespace QuanLyPhongTro.GUI
         private AntdUI.Select cboYear;
         private int currentMonth;
         private int currentYear;
+        private readonly InvoiceBLL _invoiceBLL;
+        private readonly ServiceBLL _serviceBLL;
 
         public UC_Services()
         {
+            _invoiceBLL = new InvoiceBLL();
+            _serviceBLL = new ServiceBLL();
             this.BackColor = AppColors.Blue50;
             currentMonth = DateTime.Now.Month;
             currentYear = DateTime.Now.Year;
