@@ -1,12 +1,10 @@
 ﻿using System;
 using System.Drawing;
 using System.Drawing.Drawing2D;
-using System.Security.Cryptography;
-using System.Text;
 using System.Windows.Forms;
 using AntdUI;
+using QuanLyPhongTro.BLL;
 using QuanLyPhongTro.Core;
-using QuanLyPhongTro.DAL;
 
 namespace QuanLyPhongTro.GUI
 {
@@ -14,9 +12,12 @@ namespace QuanLyPhongTro.GUI
     {
         private AntdUI.Input txtUser;
         private AntdUI.Input txtPass;
+        private readonly AuthBLL _authBLL;
 
         public FrmLogin()
         {
+            _authBLL = new AuthBLL();
+            
             this.Size = new Size(900, 550);
             this.StartPosition = FormStartPosition.CenterScreen;
             this.Text = "Đăng nhập - Quản Lý Phòng Trọ";
@@ -200,23 +201,15 @@ namespace QuanLyPhongTro.GUI
 
             try
             {
-                // Hash password với SHA256
-                string hashedPassword = ComputeSha256Hash(password);
+                // Gọi BLL để xác thực
+                var user = _authBLL.Login(username, password);
 
-                // Kiểm tra trong database
-                var result = DatabaseHelper.ExecuteScalar(
-                    "SELECT FullName FROM Users WHERE Username = @user AND PasswordHash = @pass",
-                    new System.Data.SqlClient.SqlParameter("@user", username),
-                    new System.Data.SqlClient.SqlParameter("@pass", hashedPassword));
-
-                if (result != null)
+                if (user != null)
                 {
-                    string fullName = result.ToString();
-                    AntdUI.Message.success(this, $"Xin chào, {fullName}!");
-                    
                     // Lưu thông tin user hiện tại
-                    CurrentUser.Username = username;
-                    CurrentUser.FullName = fullName;
+                    CurrentUser.SetUser(user);
+                    
+                    AntdUI.Message.success(this, $"Xin chào, {user.FullName}!");
 
                     new FrmMain().Show();
                     this.Hide();
@@ -232,26 +225,5 @@ namespace QuanLyPhongTro.GUI
                 AntdUI.Message.error(this, "Lỗi kết nối: " + ex.Message);
             }
         }
-
-        private string ComputeSha256Hash(string rawData)
-        {
-            using (SHA256 sha256 = SHA256.Create())
-            {
-                byte[] bytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(rawData));
-                StringBuilder builder = new StringBuilder();
-                for (int i = 0; i < bytes.Length; i++)
-                {
-                    builder.Append(bytes[i].ToString("x2"));
-                }
-                return builder.ToString();
-            }
-        }
-    }
-
-    // Static class lưu thông tin user hiện tại
-    public static class CurrentUser
-    {
-        public static string Username { get; set; }
-        public static string FullName { get; set; }
     }
 }

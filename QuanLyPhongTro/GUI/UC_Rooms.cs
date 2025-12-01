@@ -3,17 +3,19 @@ using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
 using AntdUI;
+using QuanLyPhongTro.BLL;
 using QuanLyPhongTro.Core;
-using QuanLyPhongTro.DAL;
 
 namespace QuanLyPhongTro.GUI
 {
     public class UC_Rooms : UserControl
     {
         private FlowLayoutPanel flowPanel;
+        private readonly RoomBLL _roomBLL;
 
         public UC_Rooms()
         {
+            _roomBLL = new RoomBLL();
             this.BackColor = AppColors.Blue50;
             InitUI();
             LoadRooms();
@@ -59,15 +61,8 @@ namespace QuanLyPhongTro.GUI
         {
             try
             {
-                // Query mới: Lấy thêm tên khách thuê (nếu có)
-                var sql = @"
-                    SELECT r.*, cu.FullName AS TenantName
-                    FROM Rooms r
-                    LEFT JOIN Contracts c ON r.RoomId = c.RoomId AND c.IsActive = 1
-                    LEFT JOIN Customers cu ON c.CustomerId = cu.CustomerId
-                    ORDER BY r.RoomName";
-
-                var dt = DatabaseHelper.ExecuteQuery(sql);
+                // Gọi BLL thay vì DAL trực tiếp
+                var dt = _roomBLL.GetRoomsWithTenant();
                 flowPanel.Controls.Clear();
                 
                 if (dt.Rows.Count == 0)
@@ -83,7 +78,7 @@ namespace QuanLyPhongTro.GUI
 
                 foreach (DataRow row in dt.Rows)
                 {
-                    int roomId = Convert.ToInt32(row["RoomId"]);
+                    int roomId = Convert.ToInt32(row["Id"]);
                     string name = row["RoomName"].ToString();
                     string status = row["Status"]?.ToString() ?? "Trong";
                     decimal price = row["Price"] != DBNull.Value ? Convert.ToDecimal(row["Price"]) : 0;
@@ -104,7 +99,6 @@ namespace QuanLyPhongTro.GUI
             bool isRented = status == "DangThue";
             bool isDeposited = status == "DaCoc";
             
-            // Màu dịu hơn (Muted Colors)
             Color statusColor = isRented ? Color.FromArgb(244, 63, 94) : // Rose-500
                                (isDeposited ? Color.FromArgb(245, 158, 11) : // Amber-500
                                               Color.FromArgb(16, 185, 129)); // Emerald-500

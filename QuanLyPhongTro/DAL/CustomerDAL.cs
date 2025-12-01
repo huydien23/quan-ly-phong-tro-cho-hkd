@@ -1,25 +1,38 @@
 ﻿using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
 using QuanLyPhongTro.DTO;
-using QuanLyPhongTro.Core;
 
 namespace QuanLyPhongTro.DAL
 {
-    public class CustomerDAL
+    public class CustomerDAL : BaseRepository
     {
+        #region Queries
+
         public List<CustomerDTO> GetCustomers(string keyword = "")
         {
-            string sql = "SELECT * FROM Customers";
-            if (!string.IsNullOrEmpty(keyword))
-            {
-                sql += $" WHERE FullName LIKE N'%{keyword}%' OR IdentityCard LIKE '%{keyword}%'";
-            }
-            return DatabaseHelper.ExecuteQuery(sql).ToList<CustomerDTO>();
+            const string sql = @"
+                SELECT * FROM Customers 
+                WHERE (@Keyword IS NULL OR (@Keyword = '' OR FullName LIKE @Keyword OR Phone LIKE @Keyword OR IdentityCard LIKE @Keyword))
+                ORDER BY FullName";
+
+            var dt = DatabaseHelper.ExecuteQuery(sql, Param("@Keyword", $"%{keyword}%"));
+            return MapToList<CustomerDTO>(dt);
         }
 
         public bool AddCustomer(CustomerDTO cus)
         {
-            string sql = $"INSERT INTO Customers (FullName, Phone, IdentityCard, Address) VALUES (N'{cus.FullName}', '{cus.Phone}', '{cus.IdentityCard}', N'{cus.Address}')";
-            return DatabaseHelper.ExecuteNonQuery(sql) > 0;
+            const string sql = @"
+                INSERT INTO Customers (FullName, Phone, IdentityCard, Address) 
+                VALUES (@FullName, @Phone, @IdentityCard, @Address)";
+
+            return DatabaseHelper.ExecuteNonQuery(sql,
+                Param("@FullName", cus.FullName),
+                Param("@Phone", cus.Phone),
+                Param("@IdentityCard", cus.IdentityCard),
+                Param("@Address", cus.Address)) > 0;
         }
+
+        #endregion
     }
 }

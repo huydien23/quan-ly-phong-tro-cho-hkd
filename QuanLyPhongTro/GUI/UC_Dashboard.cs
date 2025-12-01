@@ -5,7 +5,7 @@ using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Windows.Forms;
 using WinChart = System.Windows.Forms.DataVisualization.Charting;
-using AntdUI; // Chỉ dùng Panel và Progress
+using AntdUI; 
 using QuanLyPhongTro.Core;
 using QuanLyPhongTro.DAL;
 
@@ -52,10 +52,10 @@ namespace QuanLyPhongTro.GUI
             // ================= HEADER =================
             var pnlHeader = new AntdUI.Panel
             {
-                Size = new Size(1080, 100), // Tăng chiều cao
+                Size = new Size(1080, 100), 
                 Back = Color.White,
                 Radius = 12,
-                Shadow = 6, // Giảm shadow cho nhẹ nhàng
+                Shadow = 6, 
                 Margin = new Padding(0, 0, 0, 25)
             };
 
@@ -293,8 +293,8 @@ namespace QuanLyPhongTro.GUI
             card.Size = new Size(200, 120);
             card.Margin = new Padding(0, 0, 15, 0);
             card.Back = bgColor;
-            card.Radius = 12; // Bo góc mềm mại
-            card.Shadow = 6;  // Đổ bóng nhẹ
+            card.Radius = 12; 
+            card.Shadow = 6;  
             
             // Dot Accent
             var pnlDot = new AntdUI.Panel 
@@ -302,7 +302,7 @@ namespace QuanLyPhongTro.GUI
                 Size = new Size(8, 8), 
                 Location = new Point(20, 26), 
                 Back = accentColor,
-                Radius = 4 // Bo tròn thành chấm
+                Radius = 4 
             };
             
             var lblTitle = new System.Windows.Forms.Label

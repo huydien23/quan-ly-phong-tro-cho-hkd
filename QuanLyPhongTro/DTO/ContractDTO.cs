@@ -8,12 +8,15 @@ namespace QuanLyPhongTro.DTO
         public int RoomId { get; set; }
         public int CustomerId { get; set; }
         public DateTime StartDate { get; set; }
-        public DateTime? EndDate { get; set; } // Nullable nếu chưa xác định ngày đi
-        public decimal Deposit { get; set; }   // Tiền cọc
-        public bool IsActive { get; set; }     // Còn hiệu lực không
+        public DateTime? EndDate { get; set; }
+        public decimal Deposit { get; set; }
+        public decimal MonthlyRent { get; set; }
+        public bool IsActive { get; set; }
+        public string Note { get; set; }
 
-        // Trường hiển thị (Display Properties)
+        // Display Properties (từ JOIN)
         public string RoomName { get; set; }
         public string CustomerName { get; set; }
+        public decimal RoomPrice { get; set; }
     }
 }

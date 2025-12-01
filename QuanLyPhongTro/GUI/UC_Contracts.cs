@@ -24,7 +24,7 @@ namespace QuanLyPhongTro.GUI
 
         private void InitUI()
         {
-            // 1. Table (thêm TRƯỚC)
+            // 1. Table 
             table = new AntdUI.Table();
             table.Dock = DockStyle.Fill;
             table.EmptyText = "Chưa có hợp đồng nào";

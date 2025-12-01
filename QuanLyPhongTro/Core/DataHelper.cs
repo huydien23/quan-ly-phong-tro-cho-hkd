@@ -7,7 +7,6 @@ namespace QuanLyPhongTro.Core
 {
     public static class DataHelper
     {
-        // Hàm thần thánh chuyển DataTable -> List<T>
         public static List<T> ToList<T>(this DataTable dt) where T : new()
         {
             List<T> data = new List<T>();
